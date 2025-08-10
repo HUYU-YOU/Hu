@@ -11,7 +11,12 @@ Prototype initial du réseau social **Hu**.
 
 ## Fonctionnalités
 - Authentification simple par nom.
-- Composants : globe 3D (via `react-globe.gl`), barres latérales avec filtres, en-tête avec bascule VIDÉO/LIVE.
+- Globe 3D basé sur **Mapbox GL** avec points colorés selon l'émotion.
+- Barres latérales avec filtres et en-tête avec bascule VIDÉO/LIVE.
 - Données fictives dans `src/data/contents.ts`.
 
 Installez les dépendances avec `npm install` avant de lancer.
+
+### Carte Mapbox
+Cette version nécessite un token Mapbox.
+Définissez la variable d'environnement `NEXT_PUBLIC_MAPBOX_TOKEN` avant d'exécuter `npm run dev`.

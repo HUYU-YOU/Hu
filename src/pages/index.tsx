@@ -4,7 +4,7 @@ import { useAppState } from '@/context/AppContext';
 import { Header } from '@/components/Header';
 import { SidebarLeft } from '@/components/SidebarLeft';
 import { SidebarRight } from '@/components/SidebarRight';
-import { Globe } from '@/components/Globe';
+import { HuMapboxGlobe } from '@/components/HuMapboxGlobe';
 
 export default function Home() {
   const { user } = useAppState();
@@ -22,7 +22,7 @@ export default function Home() {
       <div id="layout">
         <SidebarLeft />
         <main>
-          <Globe />
+          <HuMapboxGlobe />
         </main>
         <SidebarRight />
       </div>
