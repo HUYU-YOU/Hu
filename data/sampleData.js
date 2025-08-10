@@ -4,7 +4,7 @@ export const sampleData = [
     title: 'Art de rue',
     country: 'France',
     type: 'video',
-    emotion: 'joy',
+    emotion: 'yellow',
     coordinates: [2.3522, 48.8566],
   },
   {
@@ -12,7 +12,7 @@ export const sampleData = [
     title: 'Manifestation',
     country: 'USA',
     type: 'live',
-    emotion: 'anger',
+    emotion: 'red',
     coordinates: [-77.0369, 38.9072],
   },
   {
@@ -20,7 +20,7 @@ export const sampleData = [
     title: 'Apprendre React',
     country: 'Canada',
     type: 'video',
-    emotion: 'curiosity',
+    emotion: 'blue',
     coordinates: [-79.3832, 43.6532],
   },
   {
@@ -28,7 +28,7 @@ export const sampleData = [
     title: 'Parc naturel',
     country: 'Brazil',
     type: 'video',
-    emotion: 'calm',
+    emotion: 'green',
     coordinates: [-43.1729, -22.9068],
   },
   {
@@ -36,7 +36,7 @@ export const sampleData = [
     title: 'Course d\'énergie',
     country: 'Japan',
     type: 'live',
-    emotion: 'energy',
+    emotion: 'orange',
     coordinates: [139.6917, 35.6895],
   },
   {
@@ -44,7 +44,7 @@ export const sampleData = [
     title: 'Aide humanitaire',
     country: 'Ethiopia',
     type: 'live',
-    emotion: 'help',
+    emotion: 'black',
     coordinates: [38.7578, 9.0108],
   },
 ];
