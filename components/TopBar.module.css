@@ -3,8 +3,9 @@
   top: 0;
   left: 0;
   right: 0;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
   padding: 12px;
   pointer-events: none;
   z-index: 2;
@@ -25,15 +26,18 @@
 .logo {
   font-weight: bold;
   font-size: 28px;
+  justify-self: start;
 }
 
 .center {
   display: flex;
   gap: 8px;
+  justify-self: center;
 }
 
 .right {
   display: flex;
+  justify-self: end;
 }
 
 .settingsWrapper {

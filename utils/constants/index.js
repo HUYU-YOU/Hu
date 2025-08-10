@@ -5,7 +5,6 @@ export const emotions = {
   calm: { color: '#27AE60', label: 'Nature / Calm' },
   energy: { color: '#F2994A', label: 'Energy' },
   help: { color: '#111111', label: 'Urgent Help' },
-  sadness: { color: '#9B51E0', label: 'Sadness' },
 };
 
 export const emotionKeys = Object.keys(emotions);

@@ -67,7 +67,9 @@ export default function HuMapboxGlobe() {
           bias={bias}
           setBias={setBias}
         />
-        <div ref={mapContainerRef} style={{ flex: 1 }} />
+        <div style={{ flex: 1, position: 'relative' }}>
+          <div ref={mapContainerRef} style={{ position: 'absolute', inset: 0 }} />
+        </div>
         <RightPanel
           data={filteredData}
           selectedEmotions={selectedEmotions}
