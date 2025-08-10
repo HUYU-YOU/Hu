@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import TopBar from './TopBar.jsx';
 import LeftPanel from './LeftPanel.jsx';
 import RightPanel from './RightPanel.jsx';
-import { emotions, emotionKeys } from '../utils/constants.js';
+import { emotions, emotionKeys } from '../utils/constants';
 import { sampleData } from '../data/sampleData.js';
 import { useMapboxGlobe } from '../hooks/useMapboxGlobe.js';
 
