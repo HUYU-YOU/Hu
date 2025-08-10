@@ -47,6 +47,40 @@ const COUNTRY_BOUNDS = {
   "Émirats arabes unis": [51.5, 22.6, 56.6, 26.4],
 };
 
+// Codes ISO3 nécessaires pour la couche Mapbox
+const COUNTRY_ISO3 = {
+  France: "FRA",
+  Ukraine: "UKR",
+  Gaza: "PSE",
+  Chine: "CHN",
+  "États-Unis": "USA",
+  Canada: "CAN",
+  Brésil: "BRA",
+  Espagne: "ESP",
+  Italie: "ITA",
+  Allemagne: "DEU",
+  "Royaume-Uni": "GBR",
+  Pologne: "POL",
+  Turquie: "TUR",
+  Maroc: "MAR",
+  Nigéria: "NGA",
+  "Afrique du Sud": "ZAF",
+  Inde: "IND",
+  Pakistan: "PAK",
+  Bangladesh: "BGD",
+  Japon: "JPN",
+  "Corée du Sud": "KOR",
+  Indonésie: "IDN",
+  Philippines: "PHL",
+  Australie: "AUS",
+  Mexique: "MEX",
+  Argentine: "ARG",
+  Colombie: "COL",
+  Égypte: "EGY",
+  "Arabie saoudite": "SAU",
+  "Émirats arabes unis": "ARE",
+};
+
 // Capitales (avec poids démographique) pour générer des exemples de points
 const CAPITALS = [
   { country: "France", city: "Paris", lat: 48.8566, lng: 2.3522, pop: 11.0 },
@@ -189,7 +223,7 @@ export default function HuMapboxGlobe() {
   const [loading, setLoading] = useState(false);
 
   // Filtrer les points selon les humeurs et le type (vidéo/live)
-  const filteredFeats = useMemo(
+const filteredFeats = useMemo(
     () =>
       allFeats.filter(f => {
         const p = f.properties;
@@ -200,6 +234,25 @@ export default function HuMapboxGlobe() {
       }),
     [allFeats, selectedColors, showVideo, showLive],
   );
+
+  // Couleur dominante par pays
+  const countryColors = useMemo(() => {
+    const counts = {};
+    for (const f of filteredFeats) {
+      const iso = COUNTRY_ISO3[f.properties.country];
+      if (!iso) continue;
+      counts[iso] = counts[iso] || {};
+      const color = f.properties.color;
+      counts[iso][color] = (counts[iso][color] || 0) + 1;
+    }
+    const res = {};
+    for (const iso in counts) {
+      const entries = Object.entries(counts[iso]);
+      const dominant = entries.reduce((a, b) => (a[1] >= b[1] ? a : b))[0];
+      res[iso] = HU_COLORS[dominant].hex;
+    }
+    return res;
+  }, [filteredFeats]);
 
   // Lorsque l'utilisateur active/désactive le "biais actualités", régénérer les points
   useEffect(() => {
@@ -258,6 +311,44 @@ export default function HuMapboxGlobe() {
         "space-color": "rgb(15, 25, 40)",
         "star-intensity": 0.6,
       });
+
+      // Supprimer les contours administratifs
+      [
+        "admin-0-boundary",
+        "admin-0-boundary-disputed",
+        "admin-0-boundary-bg",
+        "admin-1-boundary",
+        "admin-1-boundary-bg",
+        "admin-1-boundary-disputed",
+      ].forEach(id => {
+        if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", "none");
+      });
+
+      // Source des frontières par pays
+      if (!map.getSource("countries")) {
+        map.addSource("countries", {
+          type: "vector",
+          url: "mapbox://mapbox.country-boundaries-v1",
+        });
+      }
+
+      // Couche remplissage des pays
+      if (!map.getLayer("country-fills")) {
+        map.addLayer(
+          {
+            id: "country-fills",
+            type: "fill",
+            source: "countries",
+            "source-layer": "country_boundaries",
+            paint: {
+              "fill-color": "rgba(0,0,0,0)",
+              "fill-opacity": 0.5,
+              "fill-outline-color": "rgba(0,0,0,0)",
+            },
+          },
+          "waterway-label",
+        );
+      }
 
       map.addSource("points", {
         type: "geojson",
@@ -365,6 +456,18 @@ export default function HuMapboxGlobe() {
     }));
     map.getSource("points").setData({ type: "FeatureCollection", features: feats });
   }, [filteredFeats]);
+
+  // Met à jour la couleur dominante des pays
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !map.getLayer("country-fills")) return;
+    const match = ["match", ["get", "iso_3166_1_alpha_3"]];
+    Object.entries(countryColors).forEach(([iso, hex]) => {
+      match.push(iso, hex);
+    });
+    match.push("rgba(0,0,0,0)");
+    map.setPaintProperty("country-fills", "fill-color", match);
+  }, [countryColors]);
 
   // Zoomer sur un pays depuis la liste déroulante
   function zoomToCountry(name) {
