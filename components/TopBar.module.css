@@ -1,0 +1,68 @@
+.topBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.topBar button {
+  pointer-events: auto;
+  background: var(--button-bg);
+  color: var(--button-color);
+  border: none;
+  padding: 8px 12px;
+  margin: 0 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.center {
+  display: flex;
+  gap: 8px;
+}
+
+.right {
+  display: flex;
+}
+
+.settingsWrapper {
+  position: relative;
+}
+
+.settingsMenu {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--panel-bg);
+  color: var(--text-color);
+  border-radius: 6px;
+  padding: 8px;
+  pointer-events: auto;
+}
+
+.settingsMenu button {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.active {
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+}
+
+.counter {
+  margin-left: 4px;
+}

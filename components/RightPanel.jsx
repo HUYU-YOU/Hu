@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { emotions, emotionKeys } from '../utils/constants.js';
-import styles from '../styles/RightPanel.module.css';
+import styles from './RightPanel.module.css';
 
 export default function RightPanel({ data, selectedEmotions, setSelectedEmotions, onSelect }) {
   const pageSize = 8;

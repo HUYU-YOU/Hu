@@ -1,4 +1,4 @@
-import styles from '../styles/LeftPanel.module.css';
+import styles from './LeftPanel.module.css';
 
 export default function LeftPanel({
   countries,

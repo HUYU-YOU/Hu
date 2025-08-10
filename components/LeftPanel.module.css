@@ -1,0 +1,22 @@
+.leftPanel {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 260px;
+  background: var(--panel-bg);
+  color: var(--text-color);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 16px;
+}
+
+.biasBtn {
+  padding: 8px;
+  border: none;
+  background: var(--button-bg);
+  color: var(--button-color);
+  cursor: pointer;
+  font-size: 16px;
+}
