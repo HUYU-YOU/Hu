@@ -1,4 +1,5 @@
 import { useAppState, EmotionColor } from '@/context/AppContext';
+import { emotionHex } from '@/utils/constants';
 import styles from './Sidebar.module.css';
 
 const emotionLabels: Record<EmotionColor, string> = {
@@ -28,8 +29,15 @@ export const SidebarRight = () => {
       </div>
       <ul className={styles.list}>
         {filtered.map(c => (
-          <li key={c.id} className={styles.item}>
-            {c.title} ({c.country})
+          <li
+            key={c.id}
+            className={styles.item}
+            style={{ borderLeftColor: emotionHex[c.emotion] }}
+          >
+            <span className={styles.title}>{c.title}</span>
+            <span className={styles.meta}>
+              {c.country} • {c.type}
+            </span>
           </li>
         ))}
       </ul>

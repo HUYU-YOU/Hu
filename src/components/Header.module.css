@@ -1,19 +1,25 @@
 .header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.85);
 }
+
 .logo {
   font-weight: bold;
-  margin-right: 16px;
+  font-size: 20px;
 }
+
+.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .modeBtn {
-  padding: 4px 8px;
+  padding: 6px 12px;
   border: 1px solid #ccc;
   background: white;
   cursor: pointer;
 }
-.spacer {
-  flex: 1;
-}
+

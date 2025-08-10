@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useAppState } from '@/context/AppContext';
 import styles from './Header.module.css';
 
@@ -7,11 +8,12 @@ export const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>hu.</div>
+      <div className={styles.logo}>
+        <Link href="/menu">hu.</Link>
+      </div>
       <button onClick={() => setMode(mode === 'video' ? 'live' : 'video')} className={styles.modeBtn}>
         {mode === 'video' ? 'VIDÉO' : `LIVE (${liveCount})`}
       </button>
-      <div className={styles.spacer} />
     </header>
   );
 };
