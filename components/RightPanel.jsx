@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { emotions, emotionKeys } from '../utils/constants';
+import { emotions, emotionKeys } from '../utils/constants/index.js';
 import styles from './RightPanel.module.css';
 
 export default function RightPanel({ data, selectedEmotions, setSelectedEmotions, onSelect }) {
