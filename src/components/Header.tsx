@@ -11,9 +11,20 @@ export const Header = () => {
       <div className={styles.logo}>
         <Link href="/menu">hu.</Link>
       </div>
-      <button onClick={() => setMode(mode === 'video' ? 'live' : 'video')} className={styles.modeBtn}>
-        {mode === 'video' ? 'VIDÉO' : `LIVE (${liveCount})`}
-      </button>
+      <div className={styles.center}>
+        <button
+          className={`${styles.modeBtn} ${mode === 'video' ? styles.active : ''}`}
+          onClick={() => setMode('video')}
+        >
+          VIDÉO
+        </button>
+        <button
+          className={`${styles.modeBtn} ${mode === 'live' ? styles.active : ''}`}
+          onClick={() => setMode('live')}
+        >
+          LIVE ({liveCount})
+        </button>
+      </div>
     </header>
   );
 };
