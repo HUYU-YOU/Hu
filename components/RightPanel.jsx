@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { emotions, emotionKeys } from '../utils/constants.js';
 import styles from './RightPanel.module.css';
 
