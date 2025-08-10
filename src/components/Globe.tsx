@@ -13,7 +13,7 @@ const dayFactorLocal = () => {
 };
 
 export const Globe = () => {
-  const { contents, emotions, selectedCountry, mode } = useAppState();
+  const { contents, emotions, selectedCountry, mode, focus } = useAppState();
   const mapRef = useRef<mapboxgl.Map | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -187,6 +187,12 @@ export const Globe = () => {
       map.fitBounds(bounds, { padding: 50, duration: 1000 });
     }
   }, [selectedCountry, contents]);
+
+  useEffect(() => {
+    const map = mapRef.current;
+    if (!map || !focus) return;
+    map.flyTo({ center: [focus.lng, focus.lat], zoom: 5, speed: 0.9 });
+  }, [focus]);
 
   return <div ref={containerRef} style={{ width: '100%', height: '100%' }} />;
 };

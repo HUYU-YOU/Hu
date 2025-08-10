@@ -12,7 +12,7 @@ const emotionLabels: Record<EmotionColor, string> = {
 };
 
 export const SidebarRight = () => {
-  const { emotions, toggleEmotion, contents, selectedCountry, mode } = useAppState();
+  const { emotions, toggleEmotion, contents, selectedCountry, mode, setFocus } = useAppState();
   const filtered = contents.filter(c =>
     emotions[c.emotion] && (selectedCountry ? c.country === selectedCountry : true) && c.type === mode
   );
@@ -32,7 +32,8 @@ export const SidebarRight = () => {
           <li
             key={c.id}
             className={styles.item}
-            style={{ borderLeftColor: emotionHex[c.emotion] }}
+            style={{ borderLeftColor: emotionHex[c.emotion], cursor: 'pointer' }}
+            onClick={() => setFocus(c.coords)}
           >
             <span className={styles.title}>{c.title}</span>
             <span className={styles.meta}>

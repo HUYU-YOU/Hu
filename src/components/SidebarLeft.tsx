@@ -1,10 +1,13 @@
+import { useMemo } from 'react';
 import { useAppState } from '@/context/AppContext';
 import styles from './Sidebar.module.css';
 
-const countries = ['France', 'Espagne', 'Brésil'];
-
 export const SidebarLeft = () => {
-  const { selectedCountry, setCountry, bias, toggleBias } = useAppState();
+  const { contents, selectedCountry, setCountry, bias, toggleBias } = useAppState();
+  const countries = useMemo(
+    () => Array.from(new Set(contents.map(c => c.country))).sort(),
+    [contents],
+  );
 
   return (
     <aside className={styles.sidebar}>
