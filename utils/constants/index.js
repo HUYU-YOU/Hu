@@ -8,3 +8,6 @@ export const emotions = {
 };
 
 export const emotionKeys = Object.keys(emotions);
+
+// Backwards-compatibility export used by older components
+export const emotionColors = emotions;

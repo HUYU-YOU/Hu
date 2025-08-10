@@ -1,4 +1,4 @@
-import { emotions, emotionKeys } from '../utils/constants.js';
+import { emotions, emotionKeys } from '../utils/constants/index.js';
 
 // simple deterministic PRNG so server and client generate the same data
 function mulberry32(a) {
