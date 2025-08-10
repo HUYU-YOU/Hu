@@ -164,16 +164,17 @@ export const Globe = () => {
 
     return () => {
       map.remove();
+      mapRef.current = null;
     };
-  }, [features]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const map = mapRef.current;
-    if (!map || !map.getSource('points')) return;
-    (map.getSource('points') as mapboxgl.GeoJSONSource).setData({
-      type: 'FeatureCollection',
-      features,
-    });
+    if (!map) return;
+    const source = map.getSource('points') as mapboxgl.GeoJSONSource | undefined;
+    if (!source) return;
+    source.setData({ type: 'FeatureCollection', features });
   }, [features]);
 
   useEffect(() => {

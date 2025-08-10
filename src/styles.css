@@ -12,3 +12,35 @@ main {
   flex: 1;
   position: relative;
 }
+.login {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+.loginInput {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.loginButton {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  background: #2962ff;
+  color: #fff;
+  cursor: pointer;
+}
+.loginTitle {
+  margin-bottom: 4px;
+  text-align: center;
+}

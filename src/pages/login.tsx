@@ -14,10 +14,20 @@ export default function Login() {
   };
 
   return (
-    <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '40px' }}>
-      <h1>Connexion</h1>
-      <input value={name} onChange={e => setName(e.target.value)} placeholder="Votre nom" required />
-      <button type="submit">Entrer</button>
-    </form>
+    <div className="login">
+      <form onSubmit={submit} className="loginForm">
+        <h1 className="loginTitle">hu.</h1>
+        <input
+          className="loginInput"
+          value={name}
+          onChange={e => setName(e.target.value)}
+          placeholder="Votre nom"
+          required
+        />
+        <button type="submit" className="loginButton">
+          Entrer
+        </button>
+      </form>
+    </div>
   );
 }
