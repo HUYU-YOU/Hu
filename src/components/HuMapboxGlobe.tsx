@@ -73,17 +73,16 @@ export const HuMapboxGlobe = () => {
   }, []);
 
   useEffect(() => {
-    const map = mapRef.current;
-    if (!map) return;
+    const src = mapRef.current?.getSource('points') as
+      | mapboxgl.GeoJSONSource
+      | undefined;
+    if (!src) return;
     const features = points.map(p => ({
       type: 'Feature',
       geometry: { type: 'Point', coordinates: [p.lng, p.lat] },
       properties: { color: p.color },
     }));
-    const src = map.getSource('points') as mapboxgl.GeoJSONSource;
-    if (src) {
-      src.setData({ type: 'FeatureCollection', features });
-    }
+    src.setData({ type: 'FeatureCollection', features });
   }, [points]);
 
   useEffect(() => {
