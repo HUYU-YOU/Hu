@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import HuMapboxGlobe from '@/components/HuMapboxGlobe';
-import TopBar from '@/components/TopBar';
-import LeftPanel from '@/components/LeftPanel';
-import RightPanel from '@/components/RightPanel';
-import { sampleData } from '@/data/sampleData';
+import HuMapboxGlobe from '../components/HuMapboxGlobe';
+import TopBar from '../components/TopBar';
+import LeftPanel from '../components/LeftPanel';
+import RightPanel from '../components/RightPanel';
+import { sampleData } from '../data/sampleData.js';
 
 export default function Home() {
   const [view, setView] = useState('video');

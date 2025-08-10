@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { emotionList, emotionColors } from '@/utils/constants';
-import styles from '@/styles/RightPanel.module.css';
+import { emotionList, emotionColors } from '../utils/constants.js';
+import styles from '../styles/RightPanel.module.css';
 
 export default function RightPanel({ data, selectedEmotions, setSelectedEmotions, view }) {
   const filtered = data.filter(d =>

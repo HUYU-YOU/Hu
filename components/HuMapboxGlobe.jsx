@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
-import { emotionColors } from '@/utils/constants';
+import { emotionColors } from '../utils/constants.js';
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || '';
 

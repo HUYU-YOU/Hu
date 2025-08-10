@@ -1,4 +1,4 @@
-import styles from '@/styles/TopBar.module.css';
+import styles from '../styles/TopBar.module.css';
 
 export default function TopBar({ view, setView }) {
   return (
