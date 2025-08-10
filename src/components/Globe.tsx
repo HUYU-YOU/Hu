@@ -3,7 +3,12 @@ import mapboxgl from 'mapbox-gl';
 import { useAppState } from '@/context/AppContext';
 import { emotionHex } from '@/utils/constants';
 
-mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || '';
+const token = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
+if (!token) {
+  // eslint-disable-next-line no-console
+  console.warn('Mapbox token missing: set NEXT_PUBLIC_MAPBOX_TOKEN to enable the globe');
+}
+mapboxgl.accessToken = token || '';
 
 const dayFactorLocal = () => {
   const d = new Date();
@@ -16,6 +21,14 @@ export const Globe = () => {
   const { contents, emotions, selectedCountry, mode, focus } = useAppState();
   const mapRef = useRef<mapboxgl.Map | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  if (!token) {
+    return (
+      <div style={{ color: '#fff', padding: '1rem' }}>
+        Missing Mapbox token. Define <code>NEXT_PUBLIC_MAPBOX_TOKEN</code> to display the globe.
+      </div>
+    );
+  }
 
   const features = useMemo(
     () =>
