@@ -9,7 +9,6 @@
     "test": "echo \"No tests specified\""
   },
   "dependencies": {
-    "classnames": "^2.3.2",
     "mapbox-gl": "^2.15.0",
     "next": "^14.1.0",
     "react": "^18.2.0",
