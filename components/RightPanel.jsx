@@ -2,14 +2,11 @@ import { useState } from 'react';
 import { emotionList, emotionColors } from '../utils/constants.js';
 import styles from '../styles/RightPanel.module.css';
 
-export default function RightPanel({ data, selectedEmotions, setSelectedEmotions, view }) {
-  const filtered = data.filter(d =>
-    d.type === view && (selectedEmotions.length === 0 || selectedEmotions.includes(d.emotion))
-  );
+export default function RightPanel({ data, selectedEmotions, setSelectedEmotions, onSelect }) {
   const pageSize = 5;
   const [page, setPage] = useState(0);
-  const pageCount = Math.ceil(filtered.length / pageSize) || 1;
-  const pageItems = filtered.slice(page * pageSize, (page + 1) * pageSize);
+  const pageCount = Math.ceil(data.length / pageSize) || 1;
+  const pageItems = data.slice(page * pageSize, (page + 1) * pageSize);
 
   function toggleEmotion(em) {
     if (selectedEmotions.includes(em)) {
@@ -36,7 +33,9 @@ export default function RightPanel({ data, selectedEmotions, setSelectedEmotions
       </div>
       <ul className={styles.feed}>
         {pageItems.map(item => (
-          <li key={item.id}>{item.title} - {item.country}</li>
+          <li key={item.id} onClick={() => onSelect(item)}>
+            {item.title} - {item.country}
+          </li>
         ))}
       </ul>
       <div className={styles.pagination}>

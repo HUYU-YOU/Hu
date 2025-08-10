@@ -1,8 +1,12 @@
-import { sampleData } from '../data/sampleData.js';
 import styles from '../styles/LeftPanel.module.css';
 
-export default function LeftPanel({ selectedCountry, setSelectedCountry, bias, setBias }) {
-  const countries = Array.from(new Set(sampleData.map(d => d.country)));
+export default function LeftPanel({
+  countries,
+  selectedCountry,
+  setSelectedCountry,
+  bias,
+  setBias,
+}) {
 
   return (
     <div className={styles.leftPanel}>
