@@ -2,7 +2,11 @@ import { useRef, useEffect, useImperativeHandle, forwardRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { emotionColors } from '../utils/constants.js';
 
-mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || '';
+// Fallback public token allows the globe to render even if an env token isn't provided.
+// Replace with your own Mapbox token for production use.
+const PUBLIC_TOKEN =
+  'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.V_B6CdrQywqlOg6IaUBjbg';
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || PUBLIC_TOKEN;
 
 function HuMapboxGlobe({ data, view, emotions, country, mapStyle }, ref) {
   const mapContainer = useRef(null);
