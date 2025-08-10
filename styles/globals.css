@@ -9,9 +9,40 @@ html, body, #__next, .app {
   overflow: hidden;
 }
 
+body.theme-light {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --button-bg: rgba(255, 255, 255, 0.8);
+  --button-color: #000000;
+}
+
+body.theme-dark {
+  --bg-color: #111111;
+  --text-color: #eeeeee;
+  --button-bg: rgba(0, 0, 0, 0.6);
+  --button-color: #ffffff;
+}
+
+.app {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
 .map-container {
   position: absolute;
   top: 0;
   bottom: 0;
   width: 100%;
+}
+
+.myPosition {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: var(--button-bg);
+  color: var(--button-color);
+  border: none;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
 }

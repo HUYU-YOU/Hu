@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import HuMapboxGlobe from '../components/HuMapboxGlobe';
 import TopBar from '../components/TopBar';
 import LeftPanel from '../components/LeftPanel';
@@ -10,10 +10,25 @@ export default function Home() {
   const [selectedEmotions, setSelectedEmotions] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [bias, setBias] = useState(true);
+  const [mapStyle, setMapStyle] = useState('light');
+  const [theme, setTheme] = useState('light');
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    document.body.classList.remove('theme-light', 'theme-dark');
+    document.body.classList.add(`theme-${theme}`);
+  }, [theme]);
 
   return (
     <div className="app">
-      <TopBar view={view} setView={setView} />
+      <TopBar
+        view={view}
+        setView={setView}
+        mapStyle={mapStyle}
+        setMapStyle={setMapStyle}
+        theme={theme}
+        setTheme={setTheme}
+      />
       <LeftPanel
         selectedCountry={selectedCountry}
         setSelectedCountry={setSelectedCountry}
@@ -21,10 +36,12 @@ export default function Home() {
         setBias={setBias}
       />
       <HuMapboxGlobe
+        ref={mapRef}
         data={sampleData}
         view={view}
         emotions={selectedEmotions}
         country={selectedCountry}
+        mapStyle={mapStyle}
       />
       <RightPanel
         data={sampleData}
@@ -32,6 +49,9 @@ export default function Home() {
         setSelectedEmotions={setSelectedEmotions}
         view={view}
       />
+      <button className="myPosition" onClick={() => mapRef.current?.centerOnUser()}>
+        Ma position
+      </button>
     </div>
   );
 }

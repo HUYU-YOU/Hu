@@ -11,7 +11,8 @@
 
 .topBar button {
   pointer-events: auto;
-  background: rgba(255, 255, 255, 0.8);
+  background: var(--button-bg);
+  color: var(--button-color);
   border: none;
   padding: 4px 8px;
   margin: 0 4px;
@@ -25,6 +26,11 @@
 }
 
 .center {
+  display: flex;
+  gap: 4px;
+}
+
+.right {
   display: flex;
   gap: 4px;
 }
