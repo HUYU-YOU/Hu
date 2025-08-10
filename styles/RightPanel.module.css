@@ -3,7 +3,8 @@
   top: 40px;
   right: 0;
   width: 250px;
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--panel-bg);
+  color: var(--text-color);
   padding: 8px;
   display: flex;
   flex-direction: column;

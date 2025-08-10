@@ -14,6 +14,7 @@ body.theme-light {
   --text-color: #000000;
   --button-bg: rgba(255, 255, 255, 0.8);
   --button-color: #000000;
+  --panel-bg: rgba(255, 255, 255, 0.9);
 }
 
 body.theme-dark {
@@ -21,6 +22,7 @@ body.theme-dark {
   --text-color: #eeeeee;
   --button-bg: rgba(0, 0, 0, 0.6);
   --button-color: #ffffff;
+  --panel-bg: rgba(0, 0, 0, 0.7);
 }
 
 .app {
@@ -35,6 +37,7 @@ body.theme-dark {
   left: 0;
   right: 0;
   width: 100%;
+  height: 100%;
 }
 
 .myPosition {

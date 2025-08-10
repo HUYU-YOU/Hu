@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from '../styles/TopBar.module.css';
 
 export default function TopBar({
@@ -8,6 +9,8 @@ export default function TopBar({
   theme,
   setTheme,
 }) {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className={styles.topBar}>
       <button className={styles.logo}>hu.</button>
@@ -32,7 +35,14 @@ export default function TopBar({
         <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
           {theme === 'light' ? '🌙' : '☀️'}
         </button>
-        <button>⚙️</button>
+        <div className={styles.settingsWrapper}>
+          <button onClick={() => setOpen(o => !o)}>⚙️</button>
+          {open && (
+            <div className={styles.settingsMenu}>
+              <button>Déconnexion</button>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

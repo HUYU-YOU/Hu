@@ -3,7 +3,8 @@
   top: 40px;
   left: 0;
   width: 200px;
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--panel-bg);
+  color: var(--text-color);
   padding: 8px;
   display: flex;
   flex-direction: column;
@@ -13,6 +14,7 @@
 .biasBtn {
   padding: 4px;
   border: none;
-  background: #eee;
+  background: var(--button-bg);
+  color: var(--button-color);
   cursor: pointer;
 }
