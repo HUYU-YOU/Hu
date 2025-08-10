@@ -1,5 +1,17 @@
 import { emotions, emotionKeys } from '../utils/constants.js';
 
+// simple deterministic PRNG so server and client generate the same data
+function mulberry32(a) {
+  return function () {
+    let t = (a += 0x6d2b79f5);
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+const rand = mulberry32(1);
+
 const CAPITALS = [
   { country: 'France', city: 'Paris', lat: 48.8566, lng: 2.3522 },
   { country: 'USA', city: 'New York', lat: 40.7128, lng: -74.006 },
@@ -33,15 +45,15 @@ const CAPITALS = [
 ];
 
 function jitter(lat, lng) {
-  const d = (Math.random() * 1.2) + 0.1;
+  const d = rand() * 1.2 + 0.1;
   return {
-    lat: lat + (Math.random() - 0.5) * d,
-    lng: lng + (Math.random() - 0.5) * d,
+    lat: lat + (rand() - 0.5) * d,
+    lng: lng + (rand() - 0.5) * d,
   };
 }
 
 function randomEmotion() {
-  const idx = Math.floor(Math.random() * emotionKeys.length);
+  const idx = Math.floor(rand() * emotionKeys.length);
   return emotionKeys[idx];
 }
 
@@ -51,9 +63,9 @@ function generateData() {
   let videos = 500;
   let lives = 200;
   while (videos + lives > 0) {
-    const c = CAPITALS[Math.floor(Math.random() * CAPITALS.length)];
+    const c = CAPITALS[Math.floor(rand() * CAPITALS.length)];
     const { lat, lng } = jitter(c.lat, c.lng);
-    const type = Math.random() < videos / (videos + lives) ? 'video' : 'live';
+    const type = rand() < videos / (videos + lives) ? 'video' : 'live';
     if (type === 'video') videos--; else lives--;
     const emotion = randomEmotion();
     features.push({
