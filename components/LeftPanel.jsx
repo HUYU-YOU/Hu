@@ -16,7 +16,7 @@ export default function LeftPanel({
         style={{ padding: '8px', fontSize: '16px' }}
       >
         <option value="">Tous les pays</option>
-        {countries.map(c => (
+        {(countries || []).map(c => (
           <option key={c} value={c}>{c}</option>
         ))}
       </select>
