@@ -29,17 +29,17 @@ export default function TopBar({
         </button>
       </div>
       <div className={styles.right}>
-        <button onClick={() => setMapStyle(mapStyle === 'light' ? 'satellite' : 'light')}>
-          🌍
-        </button>
-        <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-          {theme === 'light' ? '🌙' : '☀️'}
-        </button>
         <div className={styles.settingsWrapper}>
-          <button onClick={() => setOpen(o => !o)}>⚙️</button>
+          <button onClick={() => setOpen((o) => !o)}>⚙️</button>
           {open && (
             <div className={styles.settingsMenu}>
-              <button>Déconnexion</button>
+              <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
+                {theme === 'light' ? 'Dark mode' : 'Light mode'}
+              </button>
+              <button onClick={() => setMapStyle(mapStyle === 'light' ? 'satellite' : 'light')}>
+                {mapStyle === 'light' ? 'Satellite view' : 'Map view'}
+              </button>
+              <button>Logout</button>
             </div>
           )}
         </div>

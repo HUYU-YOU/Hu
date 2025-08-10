@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { emotionList, emotionColors } from '../utils/constants.js';
+import { emotions, emotionKeys } from '../utils/constants.js';
 import styles from '../styles/RightPanel.module.css';
 
 export default function RightPanel({ data, selectedEmotions, setSelectedEmotions, onSelect }) {
-  const pageSize = 5;
+  const pageSize = 8;
   const [page, setPage] = useState(0);
   const pageCount = Math.ceil(data.length / pageSize) || 1;
   const pageItems = data.slice(page * pageSize, (page + 1) * pageSize);
@@ -20,20 +20,29 @@ export default function RightPanel({ data, selectedEmotions, setSelectedEmotions
   return (
     <div className={styles.rightPanel}>
       <div className={styles.emotions}>
-        {emotionList.map(em => (
-          <label key={em} style={{ backgroundColor: emotionColors[em] }}>
+        {emotionKeys.map((key) => (
+          <label key={key} style={{ backgroundColor: emotions[key].color }}>
             <input
               type="checkbox"
-              checked={selectedEmotions.includes(em)}
-              onChange={() => toggleEmotion(em)}
+              checked={selectedEmotions.includes(key)}
+              onChange={() => toggleEmotion(key)}
             />
-            {em}
+            {emotions[key].label}
           </label>
         ))}
       </div>
       <ul className={styles.feed}>
         {pageItems.map(item => (
-          <li key={item.id} onClick={() => onSelect(item)}>
+          <li
+            key={item.id}
+            onClick={() => onSelect(item)}
+            style={{
+              borderLeft: `4px solid ${emotions[item.emotion].color}`,
+              paddingLeft: '8px',
+              marginBottom: '8px',
+              cursor: 'pointer',
+            }}
+          >
             {item.title} - {item.country}
           </li>
         ))}

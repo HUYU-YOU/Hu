@@ -9,7 +9,7 @@ html, body, #__next, .app {
   overflow: hidden;
 }
 
-body.theme-light {
+.theme-light {
   --bg-color: #ffffff;
   --text-color: #000000;
   --button-bg: rgba(255, 255, 255, 0.8);
@@ -17,7 +17,7 @@ body.theme-light {
   --panel-bg: rgba(255, 255, 255, 0.9);
 }
 
-body.theme-dark {
+.theme-dark {
   --bg-color: #111111;
   --text-color: #eeeeee;
   --button-bg: rgba(0, 0, 0, 0.6);

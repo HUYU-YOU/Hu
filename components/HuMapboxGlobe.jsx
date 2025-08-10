@@ -2,15 +2,13 @@ import { useMemo, useState } from 'react';
 import TopBar from './TopBar.jsx';
 import LeftPanel from './LeftPanel.jsx';
 import RightPanel from './RightPanel.jsx';
-import { emotionColors } from '../utils/constants.js';
+import { emotions, emotionKeys } from '../utils/constants.js';
 import { sampleData } from '../data/sampleData.js';
 import { useMapboxGlobe } from '../hooks/useMapboxGlobe.js';
 
 export default function HuMapboxGlobe() {
   const [view, setView] = useState('video');
-  const [selectedEmotions, setSelectedEmotions] = useState(
-    Object.keys(emotionColors)
-  );
+  const [selectedEmotions, setSelectedEmotions] = useState(emotionKeys);
   const [selectedCountry, setSelectedCountry] = useState(null);
   const [bias, setBias] = useState(true);
   const [mapStyle, setMapStyle] = useState('light');
@@ -39,7 +37,7 @@ export default function HuMapboxGlobe() {
         properties: {
           id: d.id,
           title: d.title,
-          colorHex: emotionColors[d.emotion],
+          colorHex: emotions[d.emotion].color,
         },
       })),
     }),

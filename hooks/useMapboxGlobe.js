@@ -23,8 +23,16 @@ export function useMapboxGlobe({ mapStyle, geojson }) {
       antialias: true,
     });
     mapRef.current = map;
+    map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+    map.scrollZoom.enable();
 
     map.on('style.load', () => {
+      map.getStyle().layers.forEach((layer) => {
+        if (layer.id.includes('boundary')) {
+          map.setLayoutProperty(layer.id, 'visibility', 'none');
+        }
+      });
+
       map.addSource('points', {
         type: 'geojson',
         data: geojson,

@@ -1,14 +1,15 @@
 .rightPanel {
   position: absolute;
-  top: 40px;
+  top: 60px;
   right: 0;
-  width: 250px;
+  width: 340px;
   background: var(--panel-bg);
   color: var(--text-color);
-  padding: 8px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
-  height: calc(100% - 40px);
+  height: calc(100% - 60px);
+  font-size: 16px;
 }
 
 .emotions {
@@ -20,11 +21,11 @@
 .emotions label {
   display: flex;
   align-items: center;
-  gap: 4px;
-  padding: 2px 4px;
+  gap: 6px;
+  padding: 4px 6px;
   border-radius: 4px;
   color: #fff;
-  font-size: 12px;
+  font-size: 14px;
   cursor: pointer;
 }
 
@@ -32,7 +33,7 @@
   flex: 1;
   list-style: none;
   padding: 0;
-  margin: 8px 0;
+  margin: 12px 0;
   overflow-y: auto;
 }
 

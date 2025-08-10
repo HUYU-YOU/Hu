@@ -13,6 +13,7 @@ export default function LeftPanel({
       <select
         value={selectedCountry || ''}
         onChange={e => setSelectedCountry(e.target.value || null)}
+        style={{ padding: '8px', fontSize: '16px' }}
       >
         <option value="">Tous les pays</option>
         {countries.map(c => (
