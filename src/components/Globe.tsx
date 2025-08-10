@@ -1,17 +1,9 @@
 import { useEffect, useMemo, useRef } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { useAppState } from '@/context/AppContext';
+import { emotionHex } from '@/utils/constants';
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || '';
-
-const EMOTION_COLORS: Record<string, string> = {
-  jaune: '#FFD400',
-  bleu: '#2F80ED',
-  rouge: '#EB5757',
-  vert: '#27AE60',
-  orange: '#F2994A',
-  noir: '#111111',
-};
 
 const dayFactorLocal = () => {
   const d = new Date();
@@ -41,7 +33,7 @@ export const Globe = () => {
             coordinates: [c.coords.lng, c.coords.lat],
           },
           properties: {
-            colorHex: EMOTION_COLORS[c.emotion] || '#ffffff',
+            colorHex: emotionHex[c.emotion] || '#ffffff',
           },
         })),
     [contents, emotions, selectedCountry, mode],
