@@ -1,0 +1,39 @@
+.topBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  pointer-events: none;
+}
+
+.topBar button {
+  pointer-events: auto;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  padding: 4px 8px;
+  margin: 0 4px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.center {
+  display: flex;
+  gap: 4px;
+}
+
+.active {
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+}
+
+.counter {
+  margin-left: 4px;
+}

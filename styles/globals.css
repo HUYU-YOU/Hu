@@ -1,0 +1,17 @@
+html, body, #__next, .app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app {
+  position: relative;
+  overflow: hidden;
+}
+
+.map-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
