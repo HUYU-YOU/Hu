@@ -1,7 +1,7 @@
 import styles from './LeftPanel.module.css';
 
 export default function LeftPanel({
-  countries,
+  countries = [],
   selectedCountry,
   setSelectedCountry,
   bias,
@@ -16,8 +16,10 @@ export default function LeftPanel({
         style={{ padding: '8px', fontSize: '16px' }}
       >
         <option value="">Tous les pays</option>
-        {(countries || []).map(c => (
-          <option key={c} value={c}>{c}</option>
+        {countries.map((c) => (
+          <option key={c} value={c}>
+            {c}
+          </option>
         ))}
       </select>
       <button onClick={() => setBias(!bias)} className={styles.biasBtn}>
