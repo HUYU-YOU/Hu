@@ -1,0 +1,25 @@
+.sidebar {
+  padding: 8px;
+  background: rgba(240, 240, 240, 0.9);
+  font-size: 14px;
+}
+.filters {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+.filterLabel {
+  margin-bottom: 4px;
+}
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.item {
+  margin-bottom: 4px;
+}
+.bias {
+  margin-top: 8px;
+  display: block;
+}

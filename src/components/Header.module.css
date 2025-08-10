@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.8);
+}
+.logo {
+  font-weight: bold;
+  margin-right: 16px;
+}
+.modeBtn {
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+}
+.spacer {
+  flex: 1;
+}
