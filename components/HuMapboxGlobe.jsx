@@ -14,10 +14,9 @@ export default function HuMapboxGlobe() {
   const [mapStyle, setMapStyle] = useState('light');
   const [theme, setTheme] = useState('light');
 
-  const countries = useMemo(
-    () => Array.from(new Set(sampleData.map((d) => d.country))).sort(),
-    []
-  );
+  const countries = useMemo(() => {
+    return Array.from(new Set(sampleData.map((d) => d.country))).sort();
+  }, []);
 
   const filteredData = useMemo(() => {
     return sampleData.filter(
