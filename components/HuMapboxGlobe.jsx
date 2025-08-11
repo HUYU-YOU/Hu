@@ -49,7 +49,7 @@ export default function HuMapboxGlobe() {
   }
 
   return (
-    <div className={theme === 'dark' ? 'theme-dark' : 'theme-light'}>
+    <div className={`app ${theme === 'dark' ? 'theme-dark' : 'theme-light'}`}>
       <TopBar
         view={view}
         setView={setView}
@@ -57,17 +57,14 @@ export default function HuMapboxGlobe() {
         setMapStyle={setMapStyle}
         theme={theme}
         setTheme={setTheme}
+        countries={countries}
+        selectedCountry={selectedCountry}
+        setSelectedCountry={setSelectedCountry}
       />
       <div style={{ display: 'flex', height: '100vh' }}>
-        <LeftPanel
-          countries={countries}
-          selectedCountry={selectedCountry}
-          setSelectedCountry={setSelectedCountry}
-          bias={bias}
-          setBias={setBias}
-        />
+        <LeftPanel bias={bias} setBias={setBias} />
         <div style={{ flex: 1, position: 'relative' }}>
-          <div ref={mapContainerRef} style={{ position: 'absolute', inset: 0 }} />
+          <div ref={mapContainerRef} className="map-container" />
         </div>
         <RightPanel
           data={filteredData}

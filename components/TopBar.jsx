@@ -8,12 +8,29 @@ export default function TopBar({
   setMapStyle,
   theme,
   setTheme,
+  countries = [],
+  selectedCountry,
+  setSelectedCountry,
 }) {
   const [open, setOpen] = useState(false);
 
   return (
     <div className={styles.topBar}>
-      <button className={styles.logo}>hu.</button>
+      <div className={styles.left}>
+        <button className={styles.logo}>hu.</button>
+        <select
+          className={styles.countrySelect}
+          value={selectedCountry || ''}
+          onChange={(e) => setSelectedCountry(e.target.value || null)}
+        >
+          <option value="">Tous les pays</option>
+          {countries.map((c) => (
+            <option key={c} value={c}>
+              {c}
+            </option>
+          ))}
+        </select>
+      </div>
       <div className={styles.center}>
         <button
           className={view === 'video' ? styles.active : ''}
