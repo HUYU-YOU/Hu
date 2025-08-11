@@ -21,7 +21,7 @@
   border-radius: 6px;
   cursor: pointer;
   font-size: 17px;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.2s;
 }
 
 .topBar button:hover {
@@ -83,7 +83,9 @@
 }
 
 .active {
-  background: var(--active-bg);
-  color: var(--active-color);
+  background: #ffffff;
+  color: #000000;
+  transform: scale(1.1);
+  font-weight: bold;
 }
 

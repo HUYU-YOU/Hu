@@ -15,22 +15,32 @@
 .emotions {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 6px;
+  margin-bottom: 12px;
 }
 
-.emotions label {
+.emotion {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 6px;
-  border-radius: 4px;
-  color: #fff;
-  font-size: 14px;
+  justify-content: center;
   cursor: pointer;
+  color: #fff;
+}
+
+.emotion input {
+  display: none;
+}
+
+.selected {
+  outline: 3px solid #fff;
 }
 
 .emoji {
-  font-size: 18px;
+  font-size: 28px;
 }
 
 .feed {
@@ -41,12 +51,6 @@
   overflow-y: auto;
   border: 1px solid var(--button-hover-bg);
   border-radius: 6px;
-}
-
-.pagination {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .feedItem {

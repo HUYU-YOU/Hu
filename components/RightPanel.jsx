@@ -1,39 +1,63 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { emotions, emotionKeys } from '../utils/constants.js';
 import styles from './RightPanel.module.css';
 
 export default function RightPanel({ data, selectedEmotions, setSelectedEmotions, onSelect }) {
-  const pageSize = 8;
+  const PAGE = 20;
+  const [feedItems, setFeedItems] = useState([]);
   const [page, setPage] = useState(0);
-  const pageCount = Math.ceil(data.length / pageSize) || 1;
-  const pageItems = data.slice(page * pageSize, (page + 1) * pageSize);
+
+  useEffect(() => {
+    setFeedItems(data.slice(0, PAGE));
+    setPage(1);
+  }, [data]);
+
+  function loadMore() {
+    const next = data.slice(page * PAGE, (page + 1) * PAGE);
+    if (next.length) {
+      setFeedItems((prev) => [...prev, ...next]);
+      setPage((p) => p + 1);
+    }
+  }
 
   function toggleEmotion(em) {
     if (selectedEmotions.includes(em)) {
-      setSelectedEmotions(selectedEmotions.filter(x => x !== em));
+      setSelectedEmotions(selectedEmotions.filter((x) => x !== em));
     } else {
       setSelectedEmotions([...selectedEmotions, em]);
     }
-    setPage(0);
   }
 
   return (
     <div className={styles.rightPanel}>
       <div className={styles.emotions}>
         {emotionKeys.map((key) => (
-          <label key={key} style={{ backgroundColor: emotions[key].color }}>
+          <label
+            key={key}
+            className={`${styles.emotion} ${
+              selectedEmotions.includes(key) ? styles.selected : ''
+            }`}
+            style={{ backgroundColor: emotions[key].color }}
+          >
             <input
               type="checkbox"
               checked={selectedEmotions.includes(key)}
               onChange={() => toggleEmotion(key)}
             />
             <span className={styles.emoji}>{emotions[key].emoji}</span>
-            <span>{emotions[key].label}</span>
           </label>
         ))}
       </div>
-      <ul className={styles.feed}>
-        {pageItems.map(item => (
+      <ul
+        className={styles.feed}
+        onScroll={(e) => {
+          const el = e.currentTarget;
+          if (el.scrollTop + el.clientHeight >= el.scrollHeight - 80) {
+            loadMore();
+          }
+        }}
+      >
+        {feedItems.map((item) => (
           <li
             key={item.id}
             className={styles.feedItem}
@@ -44,11 +68,6 @@ export default function RightPanel({ data, selectedEmotions, setSelectedEmotions
           </li>
         ))}
       </ul>
-      <div className={styles.pagination}>
-        <button disabled={page === 0} onClick={() => setPage(p => p - 1)}>Prev</button>
-        <span>{page + 1}/{pageCount}</span>
-        <button disabled={page + 1 >= pageCount} onClick={() => setPage(p => p + 1)}>Next</button>
-      </div>
     </div>
   );
 }
