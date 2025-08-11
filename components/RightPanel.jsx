@@ -27,7 +27,8 @@ export default function RightPanel({ data, selectedEmotions, setSelectedEmotions
               checked={selectedEmotions.includes(key)}
               onChange={() => toggleEmotion(key)}
             />
-            {emotions[key].label}
+            <span className={styles.emoji}>{emotions[key].emoji}</span>
+            <span>{emotions[key].label}</span>
           </label>
         ))}
       </div>

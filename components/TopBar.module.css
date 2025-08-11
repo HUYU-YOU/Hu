@@ -6,7 +6,7 @@
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  padding: 12px;
+  padding: 16px;
   pointer-events: none;
   z-index: 2;
 }
@@ -16,11 +16,16 @@
   background: var(--button-bg);
   color: var(--button-color);
   border: none;
-  padding: 8px 12px;
+  padding: 10px 16px;
   margin: 0 6px;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 17px;
+  transition: background 0.2s;
+}
+
+.topBar button:hover {
+  background: var(--button-hover-bg);
 }
 
 .left {
@@ -32,7 +37,7 @@
 
 .logo {
   font-weight: bold;
-  font-size: 28px;
+  font-size: 36px;
 }
 
 .countrySelect {
@@ -78,8 +83,8 @@
 }
 
 .active {
-  background: rgba(0, 0, 0, 0.8);
-  color: #fff;
+  background: var(--active-bg);
+  color: var(--active-color);
 }
 
 .counter {

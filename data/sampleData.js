@@ -70,7 +70,7 @@ function generateData() {
     const emotion = randomEmotion();
     features.push({
       id: id++,
-      title: `${emotions[emotion].label} ${id}`,
+      title: `${emotions[emotion].emoji} ${emotions[emotion].label} ${id}`,
       country: c.country,
       type,
       emotion,

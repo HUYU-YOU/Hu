@@ -29,6 +29,10 @@
   cursor: pointer;
 }
 
+.emoji {
+  font-size: 18px;
+}
+
 .feed {
   flex: 1;
   list-style: none;

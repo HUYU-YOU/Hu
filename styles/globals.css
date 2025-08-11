@@ -15,6 +15,9 @@ html, body, #__next, .app {
   --button-bg: rgba(255, 255, 255, 0.8);
   --button-color: #000000;
   --panel-bg: rgba(255, 255, 255, 0.9);
+  --button-hover-bg: rgba(0, 0, 0, 0.1);
+  --active-bg: #2962ff;
+  --active-color: #ffffff;
 }
 
 .theme-dark {
@@ -23,6 +26,9 @@ html, body, #__next, .app {
   --button-bg: rgba(0, 0, 0, 0.6);
   --button-color: #ffffff;
   --panel-bg: rgba(0, 0, 0, 0.7);
+  --button-hover-bg: rgba(255, 255, 255, 0.2);
+  --active-bg: #2962ff;
+  --active-color: #ffffff;
 }
 
 .app {

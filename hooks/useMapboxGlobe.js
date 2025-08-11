@@ -23,7 +23,6 @@ export function useMapboxGlobe({ mapStyle, geojson }) {
       antialias: true,
     });
     mapRef.current = map;
-    map.addControl(new mapboxgl.NavigationControl(), 'top-left');
     map.scrollZoom.enable();
 
     map.on('style.load', () => {
