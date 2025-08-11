@@ -4,6 +4,11 @@ body {
   display: flex;
   height: 100vh;
 }
+
+body[data-theme='dark'] {
+  background: #0b1220;
+  color: #fff;
+}
 #layout {
   display: flex;
   flex: 1;
@@ -27,6 +32,10 @@ main {
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
+
+body[data-theme='dark'] .loginForm {
+  background: #1e293b;
+}
 .loginInput {
   padding: 8px 12px;
   border: 1px solid #ccc;
@@ -43,4 +52,5 @@ main {
 .loginTitle {
   margin-bottom: 4px;
   text-align: center;
+  font-size: 48px;
 }

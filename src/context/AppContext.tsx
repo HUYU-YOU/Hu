@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode, useMemo } from 'react';
+import { createContext, useContext, useState, ReactNode, useMemo, useEffect } from 'react';
 
 export type ContentType = 'video' | 'live';
 export type EmotionColor = 'jaune' | 'bleu' | 'rouge' | 'vert' | 'orange' | 'noir';
@@ -20,12 +20,17 @@ interface AppState {
   emotions: Record<EmotionColor, boolean>;
   contents: ContentItem[];
   focus: { lat: number; lng: number } | null;
+  theme: 'light' | 'dark';
+  mapStyle: 'standard' | 'satellite';
   setUser: (u: string | null) => void;
   setMode: (m: ContentType) => void;
   setCountry: (c: string | null) => void;
   setFocus: (c: { lat: number; lng: number } | null) => void;
   toggleBias: () => void;
   toggleEmotion: (e: EmotionColor) => void;
+  toggleTheme: () => void;
+  toggleMapStyle: () => void;
+  logout: () => void;
 }
 
 const AppContext = createContext<AppState | undefined>(undefined);
@@ -44,9 +49,20 @@ export const AppProvider = ({ children, initialContents }: { children: ReactNode
     noir: true,
   });
   const [focus, setFocus] = useState<{ lat: number; lng: number } | null>(null);
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [mapStyle, setMapStyle] = useState<'standard' | 'satellite'>('standard');
 
   const toggleBias = () => setBias(b => !b);
   const toggleEmotion = (e: EmotionColor) => setEmotions(prev => ({ ...prev, [e]: !prev[e] }));
+  const toggleTheme = () => setTheme(t => (t === 'light' ? 'dark' : 'light'));
+  const toggleMapStyle = () => setMapStyle(m => (m === 'standard' ? 'satellite' : 'standard'));
+  const logout = () => setUser(null);
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      document.body.dataset.theme = theme;
+    }
+  }, [theme]);
 
   const value = useMemo(
     () => ({
@@ -57,14 +73,19 @@ export const AppProvider = ({ children, initialContents }: { children: ReactNode
       emotions,
       contents: initialContents,
       focus,
+      theme,
+      mapStyle,
       setUser,
       setMode,
       setCountry,
       setFocus,
       toggleBias,
       toggleEmotion,
+      toggleTheme,
+      toggleMapStyle,
+      logout,
     }),
-    [user, mode, selectedCountry, bias, emotions, focus, initialContents]
+    [user, mode, selectedCountry, bias, emotions, focus, theme, mapStyle, initialContents]
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
