@@ -36,13 +36,24 @@
 .feed {
   flex: 1;
   list-style: none;
-  padding: 0;
+  padding: 8px;
   margin: 12px 0;
   overflow-y: auto;
+  border: 1px solid var(--button-hover-bg);
+  border-radius: 6px;
 }
 
 .pagination {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.feedItem {
+  border-left: 4px solid transparent;
+  padding: 6px 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
 }

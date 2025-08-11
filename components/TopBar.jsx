@@ -42,7 +42,7 @@ export default function TopBar({
           className={view === 'live' ? styles.active : ''}
           onClick={() => setView('live')}
         >
-          Live <span className={styles.counter}>0</span>
+          Live
         </button>
       </div>
       <div className={styles.right}>
@@ -51,12 +51,12 @@ export default function TopBar({
           {open && (
             <div className={styles.settingsMenu}>
               <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-                {theme === 'light' ? 'Dark mode' : 'Light mode'}
+                {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
               </button>
               <button onClick={() => setMapStyle(mapStyle === 'light' ? 'satellite' : 'light')}>
-                {mapStyle === 'light' ? 'Satellite view' : 'Map view'}
+                {mapStyle === 'light' ? '🛰️ Satellite' : '🗺️ Map'}
               </button>
-              <button>Logout</button>
+              <button>🚪 Logout</button>
             </div>
           )}
         </div>

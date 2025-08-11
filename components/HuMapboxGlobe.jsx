@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react';
 import TopBar from './TopBar.jsx';
-import LeftPanel from './LeftPanel.jsx';
 import RightPanel from './RightPanel.jsx';
 import { emotions, emotionKeys } from '../utils/constants.js';
 import { sampleData } from '../data/sampleData.js';
@@ -10,9 +9,8 @@ export default function HuMapboxGlobe() {
   const [view, setView] = useState('video');
   const [selectedEmotions, setSelectedEmotions] = useState(emotionKeys);
   const [selectedCountry, setSelectedCountry] = useState(null);
-  const [bias, setBias] = useState(true);
   const [mapStyle, setMapStyle] = useState('light');
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
 
   const countries = useMemo(() => {
     return Array.from(new Set(sampleData.map((d) => d.country))).sort();
@@ -62,7 +60,6 @@ export default function HuMapboxGlobe() {
         setSelectedCountry={setSelectedCountry}
       />
       <div style={{ display: 'flex', height: '100vh' }}>
-        <LeftPanel bias={bias} setBias={setBias} />
         <div style={{ flex: 1, position: 'relative' }}>
           <div ref={mapContainerRef} className="map-container" />
         </div>

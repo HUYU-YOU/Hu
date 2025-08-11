@@ -36,13 +36,9 @@ export default function RightPanel({ data, selectedEmotions, setSelectedEmotions
         {pageItems.map(item => (
           <li
             key={item.id}
+            className={styles.feedItem}
+            style={{ borderLeftColor: emotions[item.emotion].color }}
             onClick={() => onSelect(item)}
-            style={{
-              borderLeft: `4px solid ${emotions[item.emotion].color}`,
-              paddingLeft: '8px',
-              marginBottom: '8px',
-              cursor: 'pointer',
-            }}
           >
             {item.title} - {item.country}
           </li>
