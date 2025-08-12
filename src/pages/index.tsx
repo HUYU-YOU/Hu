@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useAppState } from '@/context/AppContext';
-import { Header } from '@/components/Header';
+import { TopBar } from '@/components/TopBar';
 import { SidebarLeft } from '@/components/SidebarLeft';
 import { SidebarRight } from '@/components/SidebarRight';
 import { HuGlobe } from '@/components/HuGlobe';
@@ -18,7 +18,7 @@ export default function Home() {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
-      <Header />
+      <TopBar />
       <div id="layout">
         <SidebarLeft />
         <main>

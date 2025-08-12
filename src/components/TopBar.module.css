@@ -27,13 +27,28 @@
 .modeBtn {
   padding: 6px 12px;
   border: 1px solid #ccc;
-  background: white;
+  background: var(--button-bg);
+  color: var(--button-color);
   cursor: pointer;
 }
 
 .active {
   background: #2962ff;
   color: #fff;
+}
+
+.disabledBtn {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background: var(--button-bg);
+  color: var(--button-color);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.disabledBtn:hover {
+  background: var(--button-bg);
+  transform: none;
 }
 
 .right {

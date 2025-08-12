@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { useAppState } from '@/context/AppContext';
-import styles from './Header.module.css';
+import styles from './TopBar.module.css';
 
-export const Header = () => {
+export const TopBar = () => {
   const { mode, setMode, contents, toggleTheme, toggleMapStyle, theme, mapStyle, logout } = useAppState();
   const [open, setOpen] = useState(false);
   const liveCount = contents.filter(c => c.type === 'live').length;
@@ -25,6 +25,12 @@ export const Header = () => {
           onClick={() => setMode('live')}
         >
           LIVE ({liveCount})
+        </button>
+        <button className={styles.disabledBtn} disabled>
+          🎯 Quizz
+        </button>
+        <button className={styles.disabledBtn} disabled>
+          🏆 Défi
         </button>
       </div>
       <div className={styles.right}>
