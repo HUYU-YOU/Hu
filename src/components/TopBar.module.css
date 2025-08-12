@@ -86,3 +86,27 @@
   cursor: pointer;
   text-align: left;
 }
+
+.menuDivider {
+  margin: 6px 0;
+  border: 0;
+  height: 1px;
+  background: rgba(0,0,0,.08);
+}
+
+.logoutBtn {
+  color: #fff !important;
+  background: #ef4444 !important;
+  border-radius: 6px;
+}
+.logoutBtn:hover {
+  background: #dc2626 !important;
+}
+
+.loginBtn {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 4px 8px;
+}

@@ -13,7 +13,6 @@ export interface ContentItem {
 }
 
 interface AppState {
-  user: string | null;
   mode: ContentType;
   selectedCountry: string | null;
   bias: boolean;
@@ -22,7 +21,6 @@ interface AppState {
   focus: { lat: number; lng: number } | null;
   theme: 'light' | 'dark';
   mapStyle: 'standard' | 'satellite';
-  setUser: (u: string | null) => void;
   setMode: (m: ContentType) => void;
   setCountry: (c: string | null) => void;
   setFocus: (c: { lat: number; lng: number } | null) => void;
@@ -30,13 +28,11 @@ interface AppState {
   toggleEmotion: (e: EmotionColor) => void;
   toggleTheme: () => void;
   toggleMapStyle: () => void;
-  logout: () => void;
 }
 
 const AppContext = createContext<AppState | undefined>(undefined);
 
 export const AppProvider = ({ children, initialContents }: { children: ReactNode; initialContents: ContentItem[] }) => {
-  const [user, setUser] = useState<string | null>(null);
   const [mode, setMode] = useState<ContentType>('video');
   const [selectedCountry, setCountry] = useState<string | null>(null);
   const [bias, setBias] = useState(false);
@@ -56,7 +52,6 @@ export const AppProvider = ({ children, initialContents }: { children: ReactNode
   const toggleEmotion = (e: EmotionColor) => setEmotions(prev => ({ ...prev, [e]: !prev[e] }));
   const toggleTheme = () => setTheme(t => (t === 'light' ? 'dark' : 'light'));
   const toggleMapStyle = () => setMapStyle(m => (m === 'standard' ? 'satellite' : 'standard'));
-  const logout = () => setUser(null);
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
@@ -66,7 +61,6 @@ export const AppProvider = ({ children, initialContents }: { children: ReactNode
 
   const value = useMemo(
     () => ({
-      user,
       mode,
       selectedCountry,
       bias,
@@ -75,7 +69,6 @@ export const AppProvider = ({ children, initialContents }: { children: ReactNode
       focus,
       theme,
       mapStyle,
-      setUser,
       setMode,
       setCountry,
       setFocus,
@@ -83,9 +76,8 @@ export const AppProvider = ({ children, initialContents }: { children: ReactNode
       toggleEmotion,
       toggleTheme,
       toggleMapStyle,
-      logout,
     }),
-    [user, mode, selectedCountry, bias, emotions, focus, theme, mapStyle, initialContents]
+    [mode, selectedCountry, bias, emotions, focus, theme, mapStyle, initialContents]
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
