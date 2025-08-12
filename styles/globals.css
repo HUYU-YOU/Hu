@@ -1,0 +1,54 @@
+/* layout de base */
+html, body, #__next, .app { height: 100%; margin: 0; }
+.app{ position:relative; overflow:hidden; font-family: ui-sans-serif, system-ui, Segoe UI, Roboto, Arial; background: radial-gradient(1200px 800px at 50% 10%, #0b1220 0%, #081020 50%, #050a18 100%); color:#0f1113; }
+.mapWrap{ position:absolute; inset:0; }
+#map{ position:absolute; inset:0; }
+
+/* overlays */
+.overlayTop{ position:absolute; top:12px; left:50%; transform:translateX(-50%); z-index:10; display:flex; gap:12px; align-items:center; }
+.overlayTopLeft{ position:absolute; top:12px; left:12px; z-index:10; }
+.overlayTopRight{ position:absolute; top:12px; right:12px; z-index:10; }
+.overlayLeft{ position:absolute; left:12px; top:64px; z-index:10; width:260px; }
+.overlayRight{ position:absolute; right:12px; top:64px; bottom:12px; z-index:10; width:min(520px, 94vw); display:flex; flex-direction:column; gap:10px; }
+
+/* panels */
+.panel{ background: rgba(255,255,255,.95); backdrop-filter: blur(10px); border:1px solid rgba(0,0,0,.08); border-radius:16px; box-shadow:0 12px 30px rgba(0,0,0,.18); overflow:hidden; }
+.panel.small{ }
+.panel.large{ flex:1; display:flex; flex-direction:column; }
+.header{ display:flex; align-items:center; justify-content:space-between; padding:12px 14px; }
+.title{ font-weight:900; }
+.hint{ font-size:12px; color:#666; }
+
+/* controls */
+.bigSwitch{ display:inline-flex; border:1px solid #e2e2e2; border-radius:12px; overflow:hidden; background:#fff; }
+.bigSwitch button{ padding:8px 14px; border:0; background:#f6f7fb; cursor:pointer; font-weight:800; font-size:15px; }
+.bigSwitch button.active{ background:#111; color:#fff; }
+.select, .btn{ padding:8px 10px; border-radius:10px; border:1px solid #e2e2e2; background:#fff; cursor:pointer; font-weight:700; }
+.logoLink{ text-decoration:none; font-weight:900; font-size:16px; color:#111; background:#fff; border-radius:12px; padding:8px 12px; border:1px solid #e2e2e2; }
+
+/* humeurs */
+.colorRow{ display:flex; gap:8px; align-items:center; padding:8px 10px; border-top:1px solid #eee; cursor:pointer; }
+.swatch{ width:14px; height:14px; border-radius:999px; border:2px solid #fff; box-shadow:0 0 0 1px rgba(0,0,0,.15); }
+.badge{ font-size:12px; border:1px solid #eee; border-radius:6px; padding:2px 6px; background:#fff; }
+
+/* feed (grand comme V13) */
+.scroller{ overflow:auto; border-top:1px solid #eee; border-radius:0 0 16px 16px; max-height:calc(100vh - 260px); background:#fff; }
+.card{ border-bottom:1px solid #eee; padding:12px 14px; cursor:pointer; }
+.card:hover{ background:#fafafa; }
+.kpi{ border:1px solid #e2e2e2; border-radius:10px; background:#fff; padding:6px 10px; font-size:12px; font-weight:700; }
+
+/* locate button */
+.locateBtn{ position:absolute; right:14px; bottom:14px; z-index:10; padding:10px 12px; border-radius:10px; border:1px solid #e2e2e2; background:#fff; font-weight:700; cursor:pointer; }
+
+.theme-light .panel { background: rgba(255,255,255,.95); color:#0f1113; }
+.theme-dark  .panel { background: rgba(15,17,19,.9); color:#f3f4f6; border-color: rgba(255,255,255,.08); }
+.theme-dark  .bigSwitch button { background:#0f1113; color:#e5e7eb; border-color:#222; }
+.theme-dark  .bigSwitch button.active { background:#fff; color:#111; }
+.theme-dark  .select, .theme-dark .btn, .theme-dark .logoLink { background:#0f1113; color:#e5e7eb; border-color:#222; }
+.theme-dark  .scroller { background:#0b0f14; }
+.theme-dark  .card { border-bottom-color:#1f2937; }
+.theme-dark  .card:hover { background:#10161e; }
+.theme-dark  .hint { color:#9ca3af; }
+.theme-dark  .badge { background:#10161e; border-color:#1f2937; color:#e5e7eb; }
+.theme-dark  .kpi { background:#0f1113; color:#e5e7eb; border-color:#222; }
+.theme-dark  .locateBtn { background:#0f1113; color:#e5e7eb; border-color:#222; }
