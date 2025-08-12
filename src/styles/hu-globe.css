@@ -1,0 +1,45 @@
+:root {
+  --panel: rgba(255,255,255,.96);
+  --panel-border: rgba(0,0,0,.08);
+  --ink-soft: #64748B;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --panel: rgba(13,18,32,.96);
+    --panel-border: rgba(255,255,255,.06);
+    --ink-soft: #94a3b8;
+  }
+}
+
+/* QUIZZ drawer */
+.hu-quiz-backdrop{ position:fixed; inset:0; z-index:50; background:rgba(0,0,0,.25); backdrop-filter:blur(2px); }
+.hu-quiz-drawer{ position:fixed; top:0; right:0; bottom:0; z-index:51; width:min(420px,92vw);
+  background:var(--panel); border-left:1px solid var(--panel-border); box-shadow:-16px 0 40px rgba(0,0,0,.2);
+  display:flex; flex-direction:column; animation:huSlideIn .22s ease-out; }
+@keyframes huSlideIn{ from{ transform:translateX(20px); opacity:0 } to{ transform:none; opacity:1 } }
+.hu-quiz-body{ padding:12px; overflow:auto; display:flex; flex-direction:column; gap:12px; }
+.hu-quiz-card{ background:#fff; border:1px solid var(--panel-border); border-radius:12px; padding:12px; box-shadow:0 8px 18px rgba(2,8,23,.08); }
+@media (prefers-color-scheme: dark){ .hu-quiz-card{ background:#121722; border:1px solid rgba(255,255,255,.06);} }
+.hu-quiz-cta{ margin-top:8px; font-weight:800; padding:8px 12px; border-radius:10px; border:0; cursor:pointer;
+  background:linear-gradient(135deg,#F7D046,#FF8A3D); color:#111; }
+.hu-quiz-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+.hu-quiz-chip{ padding:6px 10px; border-radius:999px; border:1px solid var(--panel-border); cursor:pointer; background:#fff; font-weight:700; font-size:12px; }
+@media (prefers-color-scheme: dark){ .hu-quiz-chip{ background:#0f1420; color:#E5E7EB;} }
+
+/* DÉFIS drawer */
+.hu-defis-backdrop{ position:fixed; inset:0; z-index:50; background:rgba(0,0,0,.25); backdrop-filter:blur(2px); }
+.hu-defis-drawer{ position:fixed; top:0; right:0; bottom:0; z-index:51; width:min(460px,92vw);
+  background:var(--panel); border-left:1px solid var(--panel-border); box-shadow:-16px 0 40px rgba(0,0,0,.2);
+  display:flex; flex-direction:column; animation:huSlideIn .22s ease-out; }
+.hu-defis-body{ padding:12px; overflow:auto; display:flex; flex-direction:column; gap:12px; }
+.hu-defi-card{ background:#fff; border:1px solid var(--panel-border); border-radius:12px; padding:12px; box-shadow:0 8px 18px rgba(2,8,23,.08); }
+@media (prefers-color-scheme: dark){ .hu-defi-card{ background:#121722; border:1px solid rgba(255,255,255,.06);} }
+.hu-defi-meta{ display:flex; align-items:center; gap:8px; margin-bottom:6px; }
+.hu-pill{ display:inline-block; padding:4px 8px; border-radius:999px; font-weight:800; font-size:11px; background:#F8FAFC; border:1px solid var(--panel-border); color:var(--ink-soft); }
+.hu-pill.violet{ background:#F3E8FF; border-color:#E9D5FF; color:#6B21A8; }
+.hu-time{ margin-left:auto; color:#64748B; font-weight:700; font-size:12px; }
+.hu-actions{ display:flex; gap:10px; margin-top:8px; flex-wrap:wrap; }
+.hu-cta{ font-weight:800; padding:8px 12px; border-radius:10px; border:0; cursor:pointer; background:linear-gradient(135deg,#F7D046,#FF8A3D); color:#111; }
+.hu-link{ background:transparent; border:0; color:#2563EB; font-weight:800; cursor:pointer; }
+
+.hu-panel-header{ padding:12px; font-weight:800; border-bottom:1px solid var(--panel-border); }

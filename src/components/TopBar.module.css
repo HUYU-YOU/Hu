@@ -55,6 +55,13 @@
   position: absolute;
   right: 16px;
   top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kpi {
+  font-size: 14px;
 }
 
 .settingsBtn {
