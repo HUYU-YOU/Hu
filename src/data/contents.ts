@@ -7,6 +7,7 @@ export const contents: ContentItem[] = [
     title: 'Sourires de Paris',
     emotion: 'jaune',
     country: 'France',
+    flags: ['FR', 'pride'],
     coords: { lat: 48.8566, lng: 2.3522 },
   },
   {
@@ -15,6 +16,7 @@ export const contents: ContentItem[] = [
     title: 'Concert à Madrid',
     emotion: 'orange',
     country: 'Espagne',
+    flags: ['ES'],
     coords: { lat: 40.4168, lng: -3.7038 },
   },
   {
@@ -23,6 +25,7 @@ export const contents: ContentItem[] = [
     title: 'Forêt amazonienne',
     emotion: 'vert',
     country: 'Brésil',
+    flags: ['BR', 'climate'],
     coords: { lat: -3.4653, lng: -62.2159 },
   },
   {
@@ -31,6 +34,7 @@ export const contents: ContentItem[] = [
     title: 'New York Stories',
     emotion: 'jaune',
     country: 'États-Unis',
+    flags: ['US'],
     coords: { lat: 40.7128, lng: -74.006 },
   },
   {
@@ -39,6 +43,7 @@ export const contents: ContentItem[] = [
     title: 'Tokyo Tech',
     emotion: 'bleu',
     country: 'Japon',
+    flags: ['JP'],
     coords: { lat: 35.6762, lng: 139.6503 },
   },
   {
@@ -47,6 +52,7 @@ export const contents: ContentItem[] = [
     title: 'Sydney Surf',
     emotion: 'orange',
     country: 'Australie',
+    flags: ['AU'],
     coords: { lat: -33.8688, lng: 151.2093 },
   },
   {
@@ -55,6 +61,7 @@ export const contents: ContentItem[] = [
     title: 'Delhi Debate',
     emotion: 'rouge',
     country: 'Inde',
+    flags: ['IN'],
     coords: { lat: 28.6139, lng: 77.209 },
   },
   {
@@ -63,6 +70,7 @@ export const contents: ContentItem[] = [
     title: 'Lagos Night',
     emotion: 'noir',
     country: 'Nigéria',
+    flags: ['NG', 'pride'],
     coords: { lat: 6.5244, lng: 3.3792 },
   },
   {
@@ -71,6 +79,7 @@ export const contents: ContentItem[] = [
     title: 'Toronto Trails',
     emotion: 'vert',
     country: 'Canada',
+    flags: ['CA'],
     coords: { lat: 43.6532, lng: -79.3832 },
   },
   {
@@ -79,6 +88,7 @@ export const contents: ContentItem[] = [
     title: 'Buenos Aires Beats',
     emotion: 'jaune',
     country: 'Argentine',
+    flags: ['AR'],
     coords: { lat: -34.6037, lng: -58.3816 },
   },
   {
@@ -87,6 +97,7 @@ export const contents: ContentItem[] = [
     title: 'Cairo Market',
     emotion: 'orange',
     country: 'Égypte',
+    flags: ['EG'],
     coords: { lat: 30.0444, lng: 31.2357 },
   },
   {
@@ -95,6 +106,7 @@ export const contents: ContentItem[] = [
     title: 'Johannesburg Wildlife',
     emotion: 'vert',
     country: 'Afrique du Sud',
+    flags: ['ZA', 'climate'],
     coords: { lat: -26.2041, lng: 28.0473 },
   },
 ];

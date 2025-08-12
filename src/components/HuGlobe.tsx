@@ -22,7 +22,7 @@ const COUNTRY_BOUNDS: Record<string, [number, number, number, number]> = {
 };
 
 export const HuGlobe = () => {
-  const { contents, emotions, selectedCountry, mode, focus, setFocus, mapStyle, theme } = useAppState();
+  const { contents, emotions, selectedCountry, selectedFlag, mode, focus, setFocus, mapStyle, theme } = useAppState();
   const globeRef = useRef<any>(null);
 
   const points = useMemo(
@@ -31,9 +31,10 @@ export const HuGlobe = () => {
         c =>
           emotions[c.emotion] &&
           (!selectedCountry || c.country === selectedCountry) &&
+          (!selectedFlag || c.flags?.includes(selectedFlag)) &&
           c.type === mode,
       ),
-    [contents, emotions, selectedCountry, mode],
+    [contents, emotions, selectedCountry, selectedFlag, mode],
   );
 
   useEffect(() => {

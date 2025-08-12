@@ -10,11 +10,13 @@ export interface ContentItem {
   emotion: EmotionColor;
   country: string;
   coords: { lat: number; lng: number };
+  flags?: string[];
 }
 
 interface AppState {
   mode: ContentType;
   selectedCountry: string | null;
+  selectedFlag: string | null;
   bias: boolean;
   emotions: Record<EmotionColor, boolean>;
   contents: ContentItem[];
@@ -23,6 +25,7 @@ interface AppState {
   mapStyle: 'standard' | 'satellite';
   setMode: (m: ContentType) => void;
   setCountry: (c: string | null) => void;
+   setFlag: (f: string | null) => void;
   setFocus: (c: { lat: number; lng: number } | null) => void;
   toggleBias: () => void;
   toggleEmotion: (e: EmotionColor) => void;
@@ -35,6 +38,7 @@ const AppContext = createContext<AppState | undefined>(undefined);
 export const AppProvider = ({ children, initialContents }: { children: ReactNode; initialContents: ContentItem[] }) => {
   const [mode, setMode] = useState<ContentType>('video');
   const [selectedCountry, setCountry] = useState<string | null>(null);
+  const [selectedFlag, setFlag] = useState<string | null>(null);
   const [bias, setBias] = useState(false);
   const [emotions, setEmotions] = useState<Record<EmotionColor, boolean>>({
     jaune: true,
@@ -63,6 +67,7 @@ export const AppProvider = ({ children, initialContents }: { children: ReactNode
     () => ({
       mode,
       selectedCountry,
+      selectedFlag,
       bias,
       emotions,
       contents: initialContents,
@@ -71,13 +76,14 @@ export const AppProvider = ({ children, initialContents }: { children: ReactNode
       mapStyle,
       setMode,
       setCountry,
+      setFlag,
       setFocus,
       toggleBias,
       toggleEmotion,
       toggleTheme,
       toggleMapStyle,
     }),
-    [mode, selectedCountry, bias, emotions, focus, theme, mapStyle, initialContents]
+    [mode, selectedCountry, selectedFlag, bias, emotions, focus, theme, mapStyle, initialContents]
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

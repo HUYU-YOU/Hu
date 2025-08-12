@@ -1,9 +1,10 @@
 import { useMemo } from 'react';
 import { useAppState } from '@/context/AppContext';
+import { metaFlags } from '@/data/flags';
 import styles from './Sidebar.module.css';
 
 export const SidebarLeft = () => {
-  const { contents, selectedCountry, setCountry, bias, toggleBias } = useAppState();
+  const { contents, selectedCountry, setCountry, selectedFlag, setFlag, bias, toggleBias } = useAppState();
   const countries = useMemo(
     () => Array.from(new Set(contents.map(c => c.country))).sort(),
     [contents],
@@ -18,6 +19,17 @@ export const SidebarLeft = () => {
           {countries.map(c => (
             <option key={c} value={c}>
               {c}
+            </option>
+          ))}
+        </select>
+      </label>
+      <label>
+        Drapeau
+        <select value={selectedFlag ?? ''} onChange={e => setFlag(e.target.value || null)}>
+          <option value="">Tous</option>
+          {metaFlags.map(f => (
+            <option key={f.id} value={f.id}>
+              {f.label.fr}
             </option>
           ))}
         </select>
