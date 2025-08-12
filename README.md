@@ -26,3 +26,21 @@ GOOGLE_CLIENT_SECRET=...
 ```
 
 Installez les dépendances avec `npm install` avant de lancer.
+
+## Base de données
+Le projet utilise **PostgreSQL** via Prisma.
+
+1. Créez une base de données et définissez `DATABASE_URL` dans votre `.env.local` :
+
+   ```bash
+   DATABASE_URL=postgresql://user:password@host:port/dbname
+   ```
+
+2. Générez le client et appliquez le schéma :
+
+   ```bash
+   npx prisma generate
+   npx prisma migrate dev
+   ```
+
+Le schéma complet se trouve dans `prisma/schema.prisma`.
