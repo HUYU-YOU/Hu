@@ -1,0 +1,70 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  width: 18vw;
+  min-width: 220px;
+  max-width: 300px;
+  overflow-y: auto;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.filterLabel {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.item {
+  padding: 8px;
+  margin-bottom: 8px;
+  border-left: 4px solid transparent;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+}
+
+.title {
+  font-weight: 600;
+  display: block;
+}
+
+.meta {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.flagPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.1);
+  margin-right: 4px;
+}
+
+.flagLabel {
+  font-size: 12px;
+}
+
+.bias {
+  margin-top: 8px;
+  display: block;
+}

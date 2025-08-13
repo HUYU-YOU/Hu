@@ -1,0 +1,26 @@
+:root {
+  --button-bg: #ffffff;
+  --button-color: #000000;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  display: flex;
+  height: 100vh;
+}
+
+body[data-theme='dark'] {
+  background: #0b1220;
+  color: #fff;
+  --button-bg: #1e293b;
+  --button-color: #fff;
+}
+#layout {
+  display: flex;
+  flex: 1;
+}
+main {
+  flex: 1;
+  position: relative;
+}
