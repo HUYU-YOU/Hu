@@ -2,6 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  images: {
+    domains: ['drive.google.com'],
+  },
   webpack: (config) => {
     // three-globe optionally imports the WebGPU renderer which isn't
     // bundled in our installed three version.  Alias it to an empty module
