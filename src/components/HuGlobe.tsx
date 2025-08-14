@@ -53,11 +53,6 @@ export const HuGlobe = () => {
     const ambient = new THREE.AmbientLight(0xffffff, 1);
     const globe = globeRef.current;
     globe.scene?.add(ambient);
-    // slightly enlarge the globe for a closer view if supported
-    if (typeof globe.globeRadius === 'function') {
-      const currentRadius = globe.globeRadius();
-      globe.globeRadius(currentRadius * 1.05);
-    }
     return () => {
       globe.scene?.remove(ambient);
     };
@@ -85,6 +80,13 @@ export const HuGlobe = () => {
   const globeImageUrl = 'https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg';
   const bumpImageUrl = 'https://unpkg.com/three-globe/example/img/earth-topology.png';
   const backgroundImageUrl = 'https://unpkg.com/three-globe/example/img/night-sky.png';
+
+  useEffect(() => {
+    const globe = globeRef.current;
+    if (globe && typeof globe.pointOfView === 'function') {
+      globe.pointOfView({ lat: 0, lng: 0, altitude: 2 }, 0);
+    }
+  }, []);
 
   return (
     <Globe

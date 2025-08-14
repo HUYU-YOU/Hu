@@ -5,13 +5,13 @@ import { metaFlags } from '@/data/flags';
 import FlagPill from './FlagPill';
 import styles from './Sidebar.module.css';
 
-const emotionLabels: Record<EmotionColor, string> = {
-  jaune: 'Joie',
-  bleu: 'Curiosité',
-  rouge: 'Colère',
-  vert: 'Nature',
-  orange: 'Énergie',
-  noir: 'Détresse',
+const emotionMap: Record<EmotionColor, { label: string; emoji: string }> = {
+  jaune: { label: 'Joie', emoji: '😊' },
+  bleu: { label: 'Curiosité', emoji: '🧠' },
+  rouge: { label: 'Colère', emoji: '🔥' },
+  vert: { label: 'Nature', emoji: '🌿' },
+  orange: { label: 'Énergie', emoji: '⚡' },
+  noir: { label: 'Détresse', emoji: '🆘' },
 };
 
 export const SidebarRight = () => {
@@ -62,8 +62,13 @@ export const SidebarRight = () => {
       <div className={styles.filters}>
         {Object.keys(emotions).map(key => (
           <label key={key} className={styles.filterLabel}>
-            <input type="checkbox" checked={emotions[key as EmotionColor]} onChange={() => toggleEmotion(key as EmotionColor)} />
-            {emotionLabels[key as EmotionColor]}
+            <input
+              type="checkbox"
+              checked={emotions[key as EmotionColor]}
+              onChange={() => toggleEmotion(key as EmotionColor)}
+            />
+            <span className={styles.emoji}>{emotionMap[key as EmotionColor].emoji}</span>
+            {emotionMap[key as EmotionColor].label}
           </label>
         ))}
       </div>
