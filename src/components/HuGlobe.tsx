@@ -72,7 +72,10 @@ export const HuGlobe = () => {
     const lng = (minLng + maxLng) / 2;
     const span = Math.max(Math.abs(maxLat - minLat), Math.abs(maxLng - minLng));
     const altitude = Math.min(2.5, Math.max(0.5, span / 15));
-    globeRef.current.pointOfView({ lat, lng, altitude }, 1000);
+    const globe = globeRef.current;
+    if (globe && typeof globe.pointOfView === 'function') {
+      globe.pointOfView({ lat, lng, altitude }, 1000);
+    }
   }, [selectedCountry]);
 
   // Fallback material so the globe isn't rendered as a black sphere when
