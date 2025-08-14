@@ -51,12 +51,12 @@ export const HuGlobe = () => {
       controls.autoRotateSpeed = 0.1;
     }
     const ambient = new THREE.AmbientLight(0xffffff, 1);
-    globeRef.current.scene().add(ambient);
+    globeRef.current.scene?.add(ambient);
     // slightly enlarge the globe for a closer view
     const currentRadius = globeRef.current.globeRadius();
     globeRef.current.globeRadius(currentRadius * 1.05);
     return () => {
-      globeRef.current.scene().remove(ambient);
+      globeRef.current.scene?.remove(ambient);
     };
   }, []);
 
