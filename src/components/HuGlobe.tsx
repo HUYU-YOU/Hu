@@ -22,7 +22,7 @@ const COUNTRY_BOUNDS: Record<string, [number, number, number, number]> = {
 };
 
 export const HuGlobe = () => {
-  const { contents, emotions, selectedCountry, selectedFlag, mode, focus, setFocus, mapStyle, theme } = useAppState();
+  const { contents, emotions, selectedCountry, selectedFlag, mode, focus, setFocus, theme } = useAppState();
   const globeRef = useRef<any>(null);
 
   const points = useMemo(
@@ -78,11 +78,8 @@ export const HuGlobe = () => {
   // Fallback material so the globe isn't rendered as a black sphere when
   // textures fail to load (e.g. in offline environments).
   const globeMaterial = new THREE.MeshPhongMaterial({ color: '#3a7ccd' });
-  const background = theme === 'dark' ? '#050a18' : '#e6f5d0';
-  const globeImageUrl =
-    mapStyle === 'satellite'
-      ? 'https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg'
-      : 'https://unpkg.com/three-globe/example/img/earth-dark.jpg';
+  const background = theme === 'dark' ? '#000000' : '#e6f5d0';
+  const globeImageUrl = 'https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg';
   const bumpImageUrl = 'https://unpkg.com/three-globe/example/img/earth-topology.png';
   const backgroundImageUrl = 'https://unpkg.com/three-globe/example/img/night-sky.png';
 

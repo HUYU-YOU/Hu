@@ -23,8 +23,6 @@ export const SidebarRight = () => {
     setCountry,
     selectedFlag,
     setFlag,
-    bias,
-    toggleBias,
     mode,
     setFocus,
   } = useAppState();
@@ -60,9 +58,6 @@ export const SidebarRight = () => {
             </option>
           ))}
         </select>
-      </label>
-      <label className={styles.bias}>
-        <input type="checkbox" checked={bias} onChange={toggleBias} /> Biais {bias ? 'ON' : 'OFF'}
       </label>
       <div className={styles.filters}>
         {Object.keys(emotions).map(key => (

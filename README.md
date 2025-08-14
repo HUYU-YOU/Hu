@@ -10,7 +10,7 @@ Prototype initial du réseau social **Hu**.
 - `npm run lint` – vérification de style (placeholder).
 
 ## Fonctionnalités
-- Authentification via e-mail, téléphone (OTP) ou Google (`next-auth`).
+- Authentification de démonstration (email : `demo@hu.app`, mot de passe : `demo`).
 - Globe 3D basé sur **react-globe.gl** avec points colorés selon l'émotion.
 - Barres latérales avec filtres et en-tête avec bascule VIDÉO/LIVE.
 - Données fictives dans `src/data/contents.ts`.

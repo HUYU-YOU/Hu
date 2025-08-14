@@ -11,9 +11,9 @@ body {
 }
 
 body[data-theme='dark'] {
-  background: #0b1220;
+  background: #000;
   color: #fff;
-  --button-bg: #1e293b;
+  --button-bg: #111;
   --button-color: #fff;
 }
 #layout {

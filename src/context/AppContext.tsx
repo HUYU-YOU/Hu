@@ -17,7 +17,6 @@ interface AppState {
   mode: ContentType;
   selectedCountry: string | null;
   selectedFlag: string | null;
-  bias: boolean;
   emotions: Record<EmotionColor, boolean>;
   contents: ContentItem[];
   focus: { lat: number; lng: number } | null;
@@ -27,7 +26,6 @@ interface AppState {
   setCountry: (c: string | null) => void;
    setFlag: (f: string | null) => void;
   setFocus: (c: { lat: number; lng: number } | null) => void;
-  toggleBias: () => void;
   toggleEmotion: (e: EmotionColor) => void;
   toggleTheme: () => void;
   toggleMapStyle: () => void;
@@ -39,7 +37,6 @@ export const AppProvider = ({ children, initialContents }: { children: ReactNode
   const [mode, setMode] = useState<ContentType>('video');
   const [selectedCountry, setCountry] = useState<string | null>(null);
   const [selectedFlag, setFlag] = useState<string | null>(null);
-  const [bias, setBias] = useState(false);
   const [emotions, setEmotions] = useState<Record<EmotionColor, boolean>>({
     jaune: true,
     bleu: true,
@@ -52,7 +49,6 @@ export const AppProvider = ({ children, initialContents }: { children: ReactNode
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
   const [mapStyle, setMapStyle] = useState<'standard' | 'satellite'>('standard');
 
-  const toggleBias = () => setBias(b => !b);
   const toggleEmotion = (e: EmotionColor) => setEmotions(prev => ({ ...prev, [e]: !prev[e] }));
   const toggleTheme = () => setTheme(t => (t === 'light' ? 'dark' : 'light'));
   const toggleMapStyle = () => setMapStyle(m => (m === 'standard' ? 'satellite' : 'standard'));
@@ -68,7 +64,6 @@ export const AppProvider = ({ children, initialContents }: { children: ReactNode
       mode,
       selectedCountry,
       selectedFlag,
-      bias,
       emotions,
       contents: initialContents,
       focus,
@@ -78,12 +73,11 @@ export const AppProvider = ({ children, initialContents }: { children: ReactNode
       setCountry,
       setFlag,
       setFocus,
-      toggleBias,
       toggleEmotion,
       toggleTheme,
       toggleMapStyle,
     }),
-    [mode, selectedCountry, selectedFlag, bias, emotions, focus, theme, mapStyle, initialContents]
+    [mode, selectedCountry, selectedFlag, emotions, focus, theme, mapStyle, initialContents]
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
