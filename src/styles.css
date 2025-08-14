@@ -28,4 +28,5 @@ body[data-theme='dark'] {
 main {
   flex: 1;
   position: relative;
+  min-width: 0;
 }
