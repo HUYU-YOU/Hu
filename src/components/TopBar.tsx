@@ -100,20 +100,18 @@ export const TopBar = () => {
         </div>
         <div className={styles.right}>
           <div className={styles.kpi}>Visibles : {visible}</div>
-          {session ? (
-            <>
-              <button className={styles.settingsBtn} onClick={() => setOpen(o => !o)}>⚙️</button>
-              {open && (
-                <div className={styles.menu}>
-                  <button onClick={toggleTheme}>Mode {theme === 'light' ? 'nuit' : 'jour'}</button>
-                  <button onClick={toggleMapStyle}>Carte {mapStyle === 'standard' ? 'satellite' : 'standard'}</button>
-                  <hr className={styles.menuDivider} />
-                  <button className={styles.logoutBtn} onClick={() => signOut({ callbackUrl: '/' })}>Déconnexion</button>
-                </div>
+          <button className={styles.settingsBtn} onClick={() => setOpen(o => !o)}>⚙️</button>
+          {open && (
+            <div className={styles.menu}>
+              <button onClick={toggleTheme}>Mode {theme === 'light' ? 'nuit' : 'jour'}</button>
+              <button onClick={toggleMapStyle}>Carte {mapStyle === 'standard' ? 'satellite' : 'standard'}</button>
+              <hr className={styles.menuDivider} />
+              {session ? (
+                <button className={styles.logoutBtn} onClick={() => signOut({ callbackUrl: '/' })}>Déconnexion</button>
+              ) : (
+                <button className={styles.loginBtn} onClick={() => router.push('/login')}>Connexion</button>
               )}
-            </>
-          ) : (
-            <button className={styles.loginBtn} onClick={() => router.push('/login')}>Connexion</button>
+            </div>
           )}
         </div>
       </header>

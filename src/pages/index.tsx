@@ -8,11 +8,11 @@ export default function Home() {
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
       <TopBar />
       <div id="layout">
-        <SidebarLeft />
         <main>
           <HuGlobe />
         </main>
         <SidebarRight />
+        <SidebarLeft />
       </div>
     </div>
   );

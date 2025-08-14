@@ -75,10 +75,9 @@ export const HuGlobe = () => {
     globeRef.current.pointOfView({ lat, lng, altitude }, 1000);
   }, [selectedCountry]);
 
-  const texture =
-    mapStyle === 'satellite'
-      ? 'https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg'
-      : 'https://unpkg.com/three-globe/example/img/earth-dark.jpg';
+  // Fallback material so the globe isn't rendered as a black sphere when
+  // textures fail to load (e.g. in offline environments).
+  const globeMaterial = new THREE.MeshPhongMaterial({ color: '#3a7ccd' });
   const background = theme === 'dark' ? '#050a18' : '#e6f5d0';
 
   return (
@@ -87,7 +86,7 @@ export const HuGlobe = () => {
       width={undefined}
       height={undefined}
       backgroundColor={background}
-      globeImageUrl={texture}
+      globeMaterial={globeMaterial}
       pointsData={points}
       pointLat={d => d.coords.lat}
       pointLng={d => d.coords.lng}
