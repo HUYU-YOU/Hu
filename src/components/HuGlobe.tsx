@@ -79,6 +79,12 @@ export const HuGlobe = () => {
   // textures fail to load (e.g. in offline environments).
   const globeMaterial = new THREE.MeshPhongMaterial({ color: '#3a7ccd' });
   const background = theme === 'dark' ? '#050a18' : '#e6f5d0';
+  const globeImageUrl =
+    mapStyle === 'satellite'
+      ? 'https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg'
+      : 'https://unpkg.com/three-globe/example/img/earth-dark.jpg';
+  const bumpImageUrl = 'https://unpkg.com/three-globe/example/img/earth-topology.png';
+  const backgroundImageUrl = 'https://unpkg.com/three-globe/example/img/night-sky.png';
 
   return (
     <Globe
@@ -87,6 +93,9 @@ export const HuGlobe = () => {
       height={undefined}
       backgroundColor={background}
       globeMaterial={globeMaterial}
+      globeImageUrl={globeImageUrl}
+      bumpImageUrl={bumpImageUrl}
+      backgroundImageUrl={backgroundImageUrl}
       pointsData={points}
       pointLat={d => d.coords.lat}
       pointLng={d => d.coords.lng}

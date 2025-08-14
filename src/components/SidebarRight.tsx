@@ -1,5 +1,7 @@
+import { useMemo } from 'react';
 import { useAppState, EmotionColor } from '@/context/AppContext';
 import { emotionHex } from '@/utils/constants';
+import { metaFlags } from '@/data/flags';
 import FlagPill from './FlagPill';
 import styles from './Sidebar.module.css';
 
@@ -13,7 +15,20 @@ const emotionLabels: Record<EmotionColor, string> = {
 };
 
 export const SidebarRight = () => {
-  const { emotions, toggleEmotion, contents, selectedCountry, selectedFlag, mode, setFocus } = useAppState();
+  const {
+    emotions,
+    toggleEmotion,
+    contents,
+    selectedCountry,
+    setCountry,
+    selectedFlag,
+    setFlag,
+    bias,
+    toggleBias,
+    mode,
+    setFocus,
+  } = useAppState();
+  const countries = useMemo(() => Array.from(new Set(contents.map(c => c.country))).sort(), [contents]);
   const filtered = contents.filter(
     c =>
       emotions[c.emotion] &&
@@ -24,6 +39,31 @@ export const SidebarRight = () => {
 
   return (
     <aside className={styles.sidebar}>
+      <label>
+        Pays
+        <select value={selectedCountry ?? ''} onChange={e => setCountry(e.target.value || null)}>
+          <option value="">Monde entier</option>
+          {countries.map(c => (
+            <option key={c} value={c}>
+              {c}
+            </option>
+          ))}
+        </select>
+      </label>
+      <label>
+        Drapeau
+        <select value={selectedFlag ?? ''} onChange={e => setFlag(e.target.value || null)}>
+          <option value="">Tous</option>
+          {metaFlags.map(f => (
+            <option key={f.id} value={f.id}>
+              {f.label.fr}
+            </option>
+          ))}
+        </select>
+      </label>
+      <label className={styles.bias}>
+        <input type="checkbox" checked={bias} onChange={toggleBias} /> Biais {bias ? 'ON' : 'OFF'}
+      </label>
       <div className={styles.filters}>
         {Object.keys(emotions).map(key => (
           <label key={key} className={styles.filterLabel}>

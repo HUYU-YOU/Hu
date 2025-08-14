@@ -53,7 +53,7 @@ export const TopBar = () => {
     <>
       <header className={styles.header}>
         <div className={styles.logo}>
-          <Link href="/menu">
+          <Link href="/">
             <Image
               src="https://drive.google.com/uc?export=view&id=1aiTPAlssuEgKKVPX2l_QVV4_fMV2mc_m"
               alt="Hu Logo"

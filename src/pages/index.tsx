@@ -1,5 +1,4 @@
 import { TopBar } from '@/components/TopBar';
-import { SidebarLeft } from '@/components/SidebarLeft';
 import { SidebarRight } from '@/components/SidebarRight';
 import { HuGlobe } from '@/components/HuGlobe';
 
@@ -12,7 +11,6 @@ export default function Home() {
           <HuGlobe />
         </main>
         <SidebarRight />
-        <SidebarLeft />
       </div>
     </div>
   );
