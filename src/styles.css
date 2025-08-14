@@ -3,11 +3,15 @@
   --button-color: #000000;
 }
 
-body {
+html, body, #__next {
+  height: 100%;
   margin: 0;
+}
+
+body {
   font-family: sans-serif;
   display: flex;
-  height: 100vh;
+  overflow: hidden;
 }
 
 body[data-theme='dark'] {
@@ -19,6 +23,7 @@ body[data-theme='dark'] {
 #layout {
   display: flex;
   flex: 1;
+  height: 100%;
 }
 main {
   flex: 1;
