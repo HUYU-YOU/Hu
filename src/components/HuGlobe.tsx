@@ -45,7 +45,7 @@ export const HuGlobe = () => {
 
   useEffect(() => {
     if (!globeRef.current) return;
-    const controls = globeRef.current.controls();
+    const controls = globeRef.current.controls;
     if (controls) {
       controls.autoRotate = true;
       controls.autoRotateSpeed = 0.1;
