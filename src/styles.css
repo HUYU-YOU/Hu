@@ -3,9 +3,11 @@
   --button-color: #000000;
 }
 
-html, body, #__next {
+html, body, #__next, .app {
+  width: 100%;
   height: 100%;
   margin: 0;
+  padding: 0;
 }
 
 body {
@@ -22,10 +24,11 @@ body[data-theme='dark'] {
 
 /* Layout grid */
 .app {
-  height: 100vh;
-  width: 100vw;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
   display: grid;
-  grid-template-rows: 56px 1fr;
+  grid-template-rows: clamp(3rem, 8vh, 5rem) 1fr;
   grid-template-columns: 22% 1fr 28%;
 }
 
