@@ -5,9 +5,8 @@
   padding: 12px;
   background: rgba(255, 255, 255, 0.85);
   font-size: 14px;
-  width: 20%;
-  min-width: 0;
-  max-width: none;
+  width: 300px;
+  flex-shrink: 0;
   overflow-y: auto;
 }
 
