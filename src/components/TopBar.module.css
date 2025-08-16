@@ -1,0 +1,118 @@
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.85);
+  z-index: 10;
+}
+
+.logo {
+  position: absolute;
+  left: 16px;
+}
+
+.logo a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.center {
+  display: flex;
+  gap: 8px;
+}
+
+.modeBtn {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background: var(--button-bg);
+  color: var(--button-color);
+  cursor: pointer;
+}
+
+.active {
+  background: #2962ff;
+  color: #fff;
+}
+
+.disabledBtn {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background: var(--button-bg);
+  color: var(--button-color);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.disabledBtn:hover {
+  background: var(--button-bg);
+  transform: none;
+}
+
+.right {
+  position: absolute;
+  right: 16px;
+  top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kpi {
+  font-size: 14px;
+}
+
+.settingsBtn {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.menu {
+  position: absolute;
+  top: 32px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  gap: 4px;
+  z-index: 20;
+}
+
+.menu button {
+  border: none;
+  background: transparent;
+  padding: 6px 8px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.menuDivider {
+  margin: 6px 0;
+  border: 0;
+  height: 1px;
+  background: rgba(0,0,0,.08);
+}
+
+.logoutBtn {
+  color: #fff !important;
+  background: #ef4444 !important;
+  border-radius: 6px;
+}
+.logoutBtn:hover {
+  background: #dc2626 !important;
+}
+
+.loginBtn {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
