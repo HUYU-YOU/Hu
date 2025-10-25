@@ -1,0 +1,151 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Emotion {
+  jaune
+  bleu
+  rouge
+  rose
+  violet
+  noir
+}
+
+enum PostType {
+  video
+  live
+}
+
+enum Reaction {
+  like
+  dislike
+}
+
+enum QuoteKind {
+  classique
+  prevention
+  utilisateur
+}
+
+model User {
+  id          String   @id @default(uuid())
+  email       String   @unique
+  passwordHash String?
+  displayName String?
+  avatarUrl   String?
+  countryCode String?
+  createdAt   DateTime @default(now())
+
+  sessions   Session[]
+  moods      MoodDaily[]
+  posts      Post[]
+  reactions  PostReaction[]
+  following  Follow[] @relation("following")
+  followers  Follow[] @relation("followers")
+  reports    Report[]  @relation("reporter")
+  quotes     Quote[]   @relation("author")
+}
+
+model Session {
+  id           String   @id @default(uuid())
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       String
+  sessionToken String   @unique
+  expiresAt    DateTime
+}
+
+model MoodDaily {
+  id        String   @id @default(uuid())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  mood      Emotion
+  dateUtc   DateTime @map("date_utc")
+  createdAt DateTime @default(now())
+  @@unique([userId, dateUtc])
+  @@index([userId, dateUtc], name: "idx_mood_daily_user")
+}
+
+model Post {
+  id          String   @id @default(uuid())
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String
+  type        PostType
+  title       String?
+  emotion     Emotion
+  mediaUrl    String
+  thumbUrl    String?
+  countryCode String?
+  lat         Float?
+  lng         Float?
+  createdAt   DateTime @default(now())
+  expiresAt   DateTime?
+  archived    Boolean  @default(false)
+
+  reactions   PostReaction[]
+  reports     Report[]
+
+  @@index([expiresAt], name: "idx_posts_expires_at")
+  @@index([countryCode, emotion], name: "idx_posts_country")
+  @@index([userId, createdAt], name: "idx_posts_user")
+}
+
+model Follow {
+  follower   User   @relation("following", fields: [followerId], references: [id], onDelete: Cascade)
+  followerId String
+  followee   User   @relation("followers", fields: [followeeId], references: [id], onDelete: Cascade)
+  followeeId String
+  createdAt  DateTime @default(now())
+
+  @@id([followerId, followeeId])
+}
+
+model PostReaction {
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  post      Post    @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId    String
+  value     Reaction
+  createdAt DateTime @default(now())
+
+  @@id([userId, postId])
+  @@index([postId], name: "idx_reactions_post")
+}
+
+model Report {
+  id         String  @id @default(uuid())
+  post       Post    @relation(fields: [postId], references: [id], onDelete: Cascade)
+  postId     String
+  reporter   User?   @relation("reporter", fields: [reporterId], references: [id], onDelete: SetNull)
+  reporterId String?
+  reason     String?
+  status     String  @default("open")
+  createdAt  DateTime @default(now())
+}
+
+model Quote {
+  id         String    @id @default(uuid())
+  kind       QuoteKind
+  text       String
+  phoneLabel String?   @map("phone_label")
+  phoneNum   String?   @map("phone_num")
+  author     User?     @relation("author", fields: [authorId], references: [id], onDelete: SetNull)
+  authorId   String?
+  createdAt  DateTime  @default(now())
+  approved   Boolean   @default(true)
+}
+
+model CountryEmotion24h {
+  countryCode String
+  emotion     Emotion
+  source      String
+  count       Int
+  computedAt  DateTime @default(now())
+
+  @@id([countryCode, emotion, source])
+}
+
